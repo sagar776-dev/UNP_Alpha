@@ -1,0 +1,9 @@
+{
+    "mysqlConfig": {
+      "host": "45.56.107.24",
+      "port":3307,
+      "username":"root",
+      "password":"blueturtle",
+      "database": "unp_alpha"
+    }
+  }
