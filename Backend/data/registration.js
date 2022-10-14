@@ -89,7 +89,7 @@ let login = async (postData) => {
   if(data === null){
     throw "User does not exist";
   } else if(data.password !== postData.password){
-    throw "Invalid password";
+    throw "Invalid username/password";
   }
 
   return "Welcome "+postData.username+"!";

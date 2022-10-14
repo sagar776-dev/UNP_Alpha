@@ -9,7 +9,7 @@ const sequelize = require("./util/database");
 const users = require("./model/parent");
 
 const configRoutes = require('./routes/index.route');
-sequelize
+//sequelize
 const app = express();
 app.use(express.json());
 //app.use(cors());
