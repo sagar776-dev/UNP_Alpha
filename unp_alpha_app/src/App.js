@@ -1,14 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import SignUpForm from "./SignUpForm";
+import SignInForm from "./SignInForm";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
-    </div>
-  );
+return ( 
+<div className="App">
+<SignInForm />
+<button onClick={event =>  window.location.href='./SignUpForm'}>
+  Sign Up
+  </button>
+</div>
+
+
+);
 }
 
 export default App;
