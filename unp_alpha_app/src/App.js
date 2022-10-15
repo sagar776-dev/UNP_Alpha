@@ -1,9 +1,7 @@
 import logo from './logo.svg';
 import React, { useState } from 'react';
 import './App.css';
-// import './components/search'
 import Search from './components/search';
-
 import 'antd/dist/antd.css';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
