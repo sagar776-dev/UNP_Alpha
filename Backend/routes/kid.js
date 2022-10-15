@@ -6,9 +6,10 @@ const data = require("../data/index");
 const kidsData = data.kid;
 
 router
-  .route("/kid")
+  .route("/filters")
   .get(async (req, res) => {
     try {
+    console.log("reached here")
       let message = await kidsData.serachKidByFilters(req.body);
       res.send({ message: message });
     } catch (error) {
