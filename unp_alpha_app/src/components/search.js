@@ -9,7 +9,7 @@ function Search() {
   const [data, setData] = useState();
   const onFinish = (e) => {
     console.log("reached here",e)
-    axios.post('http://localhost:9000/kid/filters',e)
+    axios.post('http://localhost:5000/kid/filters',e)
     .then(response => {
       console.log("response", response.data)
       setData( response.data)
@@ -21,9 +21,9 @@ function Search() {
   return (
     <div>
     <div className="App">
-    <h3>Search Here tom Find Kids! </h3>
-    <Form
-      name="basic"
+    <h1 style={{marginBottom:20, fontSize:40}}>Search</h1>
+    <Form  
+    labelAlign='left'    
       labelCol={{
         span: 8,
       }}
@@ -42,7 +42,6 @@ function Search() {
         name="location"
         rules={[
           {
-            required: true,
             message: 'Please input your location!',
           },
         ]}
@@ -52,35 +51,23 @@ function Search() {
 
       <Form.Item
         label="Grade"
-        name="grade"
+        name="grade"        
         rules={[
           {
-            required: true,
             message: 'Please input your grade!',
           },
-        ]}
+        ]}        
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        name="remember"
-        valuePropName="checked"
         wrapperCol={{
           offset: 8,
           span: 16,
-        }}
+        }}        
       >
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
-
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" ghost='true' htmlType="submit" shape='round'>
           Search
         </Button>
       </Form.Item>
