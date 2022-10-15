@@ -90,7 +90,7 @@ function Search() {
         {data? data.message.map((item, i) => {
       return (
         <div>
-        <option key={i} value={item.id}>
+        {/* <option key={i} value={item.id}> */}
           <div>
           <Descriptions title="Kids Info">
             <Descriptions.Item label="firstname">{item.first_name}</Descriptions.Item>
@@ -101,7 +101,7 @@ function Search() {
             <Descriptions.Item label="street">{item.street}</Descriptions.Item>
       </Descriptions>
   </div>
-        </option>
+        {/* </option> */}
         </div>
       );
     }): null}
