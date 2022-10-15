@@ -1,26 +1,26 @@
-import React from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
-import Search from 'antd/lib/transfer/search';
+import React, { useState } from 'react';
+import axios, * as others from 'axios';
 import 'antd/dist/antd.css';
-import { render } from '@testing-library/react';
-const axios = require('axios');
+import { Button, Checkbox, Form, Input } from 'antd';
+import { Descriptions } from 'antd';
 
-const onFinish = (e) => {
-  console.log("reached here",e)
-  // axios.get('http://localhost:3000/kid/filters',e)
-  // .then(response => {
-  //   console.log("response", response)
-  //   console.log(response.data.url);
-  //   console.log(response.data.explanation);
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  // });
-
-}
-
-const search = () => (
-  <div className="App">
+function Search() {
+  // Declare a new state variable, which we'll call "count"
+  const [data, setData] = useState();
+  const onFinish = (e) => {
+    console.log("reached here",e)
+    axios.post('http://localhost:9000/kid/filters',e)
+    .then(response => {
+      console.log("response", response.data)
+      setData( response.data)
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+  return (
+    <div>
+    <div className="App">
     <h3>Search Here tom Find Kids! </h3>
     <Form
       name="basic"
@@ -87,6 +87,27 @@ const search = () => (
     </Form>
   ;
   </div>
-);
+        {data? data.message.map((item, i) => {
+      return (
+        <div>
+        <option key={i} value={item.id}>
+          <div>
+          <Descriptions title="Kids Info">
+            <Descriptions.Item label="firstname">{item.first_name}</Descriptions.Item>
+            <Descriptions.Item label="lastname"> {item.last_name}</Descriptions.Item>
+            <Descriptions.Item label="grade">{item.grade}</Descriptions.Item>
+            <Descriptions.Item label="location"> {item.location}</Descriptions.Item>
+            <Descriptions.Item label="school">   {item.school}</Descriptions.Item>
+            <Descriptions.Item label="street">{item.street}</Descriptions.Item>
+      </Descriptions>
+  </div>
+        </option>
+        </div>
+      );
+    }): null}
 
-export default search;
+    </div>
+  );
+}
+
+export default Search;
