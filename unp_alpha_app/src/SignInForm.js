@@ -72,7 +72,7 @@ return (
 
 <form>
 {/* Labels and inputs for form data */}
-<label className="label">User Name</label>
+<label className="label">User Name/ E-mail</label>
 <input onChange={handleName} className="input"
 value={name} type="text" />
 

@@ -2,8 +2,10 @@ import { useState } from 'react';
 export default function SignInForm() {
 
 // States for registration
-const [name, setName] = useState('');
-const [username, setUserName] = useState('');
+const [firstname, setFirstName] = useState('');
+const [lastname, setLastName] = useState('');
+const [gender, setGender] = useState('');
+const [age, setAge] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 
@@ -12,16 +14,26 @@ const [submitted, setSubmitted] = useState(false);
 const [error, setError] = useState(false);
 
 // Handling the name change
-const handleName = (e) => {
-setName(e.target.value);
+const handleFirstName = (e) => {
+setFirstName(e.target.value);
 setSubmitted(false);
 };
 
+const handleLastName = (e) => {
+    setLastName(e.target.value);
+    setSubmitted(false);
+    };
+
 // Handling the username change
-const handleUserName = (e) => {
-setUserName(e.target.value);
+const handleGender = (e) => {
+setGender(e.target.value);
 setSubmitted(false);
 };
+
+const handleAge = (e) => {
+    setAge(e.target.value);
+    setSubmitted(false);
+    };
 
 // Handling the email change
 const handleEmail = (e) => {
@@ -38,7 +50,7 @@ setSubmitted(false);
 // Handling the form submission
 const handleSubmit = (e) => {
 e.preventDefault();
-if (name === '' || email === '' || password === '') {
+if (firstname === '' || lastname === '' || email === '' || password === '') {
 setError(true);
 } else {
 setSubmitted(true);
@@ -54,7 +66,7 @@ className="success"
 style={{
 display: submitted ? '' : 'none',
 }}>
-<h1>User {name} successfully registered!!</h1>
+<h1>User {firstname} successfully registered!!</h1>
 </div>
 );
 };
@@ -86,13 +98,21 @@ return (
 
 <form>
 {/* Labels and inputs for form data */}
-<label className="label">Name</label>
-<input onChange={handleName} className="input"
-value={name} type="text" />
+<label className="label">First Name</label>
+<input onChange={handleFirstName} className="input"
+value={firstname} type="text" />
 
-<label className="label">User Name</label>
-<input onChange={handleUserName} className="input"
-value={username} type="text" />
+<label className="label">Last Name</label>
+<input onChange={handleLastName} className="input"
+value={lastname} type="text" />
+
+<label className="label">Gender</label>
+<input onChange={handleGender} className="input"
+value={gender} type="text" />
+
+<label className="label">Age</label>
+<input onChange={handleAge} className="input"
+value={age} type="text" />
 
 <label className="label">Email</label>
 <input onChange={handleEmail} className="input"
