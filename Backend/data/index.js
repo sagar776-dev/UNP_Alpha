@@ -1,5 +1,9 @@
 const registrationData = require('./registration');
+const parentsData = require('./parents')
+const kidData = require('./kid');
 
 module.exports = {
-  registration: registrationData
+  registration: registrationData,
+  parents: parentsData,
+  kid: kidData
 };
