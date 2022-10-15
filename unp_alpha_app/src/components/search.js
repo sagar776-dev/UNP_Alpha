@@ -1,10 +1,27 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Checkbox, Form, Input } from 'antd';
 import Search from 'antd/lib/transfer/search';
 import 'antd/dist/antd.css';
 import { render } from '@testing-library/react';
+const axios = require('axios');
+
+const onFinish = (e) => {
+  console.log("reached here",e)
+  // axios.get('http://localhost:3000/kid/filters',e)
+  // .then(response => {
+  //   console.log("response", response)
+  //   console.log(response.data.url);
+  //   console.log(response.data.explanation);
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // });
+
+}
+
 const search = () => (
   <div className="App">
+    <h3>Search Here tom Find Kids! </h3>
     <Form
       name="basic"
       labelCol={{
@@ -17,16 +34,16 @@ const search = () => (
         remember: true,
       }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      // onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <Form.Item
-        label="Username"
-        name="username"
+        label="location"
+        name="location"
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: 'Please input your location!',
           },
         ]}
       >
@@ -34,16 +51,16 @@ const search = () => (
       </Form.Item>
 
       <Form.Item
-        label="Password"
-        name="password"
+        label="Grade"
+        name="grade"
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: 'Please input your grade!',
           },
         ]}
       >
-        <Input.Password />
+        <Input />
       </Form.Item>
 
       <Form.Item
@@ -64,11 +81,11 @@ const search = () => (
         }}
       >
         <Button type="primary" htmlType="submit">
-          Submit
+          Search
         </Button>
       </Form.Item>
     </Form>
-  );
+  ;
   </div>
 );
 

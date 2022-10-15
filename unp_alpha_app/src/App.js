@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import './components/search'
-import Search from 'antd/lib/input/Search';
+// import './components/search'
+import Search from './components/search';
 
 function App() {
   return (
