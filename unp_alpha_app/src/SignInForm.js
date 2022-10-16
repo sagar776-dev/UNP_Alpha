@@ -1,9 +1,14 @@
 import { useState } from 'react';
+import axios from 'axios';
+
 export default function SignInForm() {
 
 // States for registration
 const [name, setName] = useState('');
 const [password, setPassword] = useState('');
+
+const [response, setResponse] = useState('');
+
 
 // States for checking the errors
 const [submitted, setSubmitted] = useState(false);
@@ -21,12 +26,28 @@ setPassword(e.target.value);
 setSubmitted(false);
 };
 
+const handleResponse = (e) => {
+    setResponse(e);
+    setSubmitted(false);
+    };
+
 // Handling the form submission
 const handleSubmit = (e) => {
 e.preventDefault();
 if (name === '' || password === '') {
 setError(true);
 } else {
+    let body = {
+        "username": name,
+        "password": password
+    
+     } 
+     axios.post("http://localhost:8080/register/login", body)
+     .then(res=>{
+        handleResponse(res.data);
+        setSubmitted(true);
+        setError(false);
+     })
 setSubmitted(true);
 setError(false);
 }
@@ -40,7 +61,7 @@ className="success"
 style={{
 display: submitted ? '' : 'none',
 }}>
-<h1>User {name} successfull Login!!</h1>
+<h1>{response.message}</h1>
 </div>
 );
 };

@@ -17,8 +17,8 @@ router
     }
   })
   .get(async (req, res) => {
-    res.status(404).json(e);
-  });
+    res.status(404).json({"Error": "Not found"});
+    });
 
 router
   .route("/signup/kid")
@@ -31,8 +31,8 @@ router
     }
   })
   .get(async (req, res) => {
-    res.status(404).json(e);
-  });
+    res.status(404).json({"Error": "Not found"});
+    });
 
 router
   .route("/login")
@@ -47,7 +47,7 @@ router
     }
   })
   .get(async (req, res) => {
-    res.status(404).json(e);
+    res.status(404).json({"Error": "Not found"});
   });
 
 router.route("/getAllUsers").get(async (req, res) => {

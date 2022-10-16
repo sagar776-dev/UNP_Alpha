@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 export default function SignInForm() {
 
 // States for registration
@@ -9,6 +10,9 @@ const [age, setAge] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 
+const [response, setResponse] = useState('');
+
+
 // States for checking the errors
 const [submitted, setSubmitted] = useState(false);
 const [error, setError] = useState(false);
@@ -18,6 +22,7 @@ const handleFirstName = (e) => {
 setFirstName(e.target.value);
 setSubmitted(false);
 };
+
 
 const handleLastName = (e) => {
     setLastName(e.target.value);
@@ -47,14 +52,32 @@ setPassword(e.target.value);
 setSubmitted(false);
 };
 
+const handleResponse = (e) => {
+    setResponse(e.target.value);
+    setSubmitted(false);
+    };
+
 // Handling the form submission
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
 e.preventDefault();
 if (firstname === '' || lastname === '' || email === '' || password === '') {
 setError(true);
 } else {
-setSubmitted(true);
-setError(false);
+   let body = {
+    "first_name":firstname,
+    "last_name":lastname,
+    "email":email,
+    "password": password,
+    "phone":"987654321",
+    "gender":gender,
+    "age":age
+ } 
+ axios.post("http://localhost:8080/register/signup/parent", body)
+ .then(res=>{
+    handleResponse(res.data);
+    setSubmitted(true);
+    setError(false);
+ })
 }
 };
 
@@ -66,7 +89,7 @@ className="success"
 style={{
 display: submitted ? '' : 'none',
 }}>
-<h1>User {firstname} successfully registered!!</h1>
+<h1>{response.message}</h1>
 </div>
 );
 };
