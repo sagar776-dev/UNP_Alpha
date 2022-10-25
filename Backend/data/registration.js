@@ -117,13 +117,13 @@ let login = async (postData) => {
   return message;
 };
 
-let viewParentById = (id) => {
-  let data = parent.findOne({ where: { email: id } });
+let viewParentById = async (id) => {
+  let data = await parent.findOne({ where: { email: id } });
   return data;
 };
 
-let viewAllUsers = () => {
-  return parent.findAll();
+let viewAllUsers = async () => {
+  return await parent.findAll();
 };
 
 encryptAES = (text) => {
