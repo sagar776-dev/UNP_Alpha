@@ -19,7 +19,7 @@ const Relation = sequelize.define("relation", {
     },
     since:{
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
     }
 }, 
 {
