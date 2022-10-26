@@ -43,6 +43,10 @@ const Parent = sequelize.define("parent", {
     userid:{
         type: Sequelize.INTEGER,
         allowNull: false,
+    },
+    location:{
+        type: Sequelize.STRING,
+        allowNull: true,
     }
     
 }, {

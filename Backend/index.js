@@ -9,10 +9,13 @@ const sequelize = require("./util/database");
 const users = require("./model/parent");
 
 const configRoutes = require('./routes/index.route');
-sequelize
+//sequelize
 const app = express();
 app.use(express.json());
 //app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 
 // const routes = require("./routes/index.route");
 // app.use(routes);

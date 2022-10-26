@@ -1,29 +1,30 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
-const Users = sequelize.define("users", {
-    id: {
+const Relation = sequelize.define("relation", {
+    from: {
         type: Sequelize.INTEGER,
-        autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    username:{
-        type: Sequelize.STRING,
+    to:{
+        type: Sequelize.INTEGER,
         allowNull: false,
+        primaryKey: true
     },
-    password:{
+    status:{
         type: Sequelize.STRING,
         allowNull: false,
+        primaryKey: true
     },
-    role:{
+    since:{
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
     }
 }, 
 {
-    tableName: "users",
+    tableName: "relation",
     timestamps: false
 })
 
-module.exports = Users;
+module.exports = Relation;

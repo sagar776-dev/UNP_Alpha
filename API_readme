@@ -1,0 +1,36 @@
+1. Signup Parent API
+
+URL: http://localhost:3000/register/signup/parent
+Sample request body: 
+{
+   "first_name":"first",
+   "last_name":"last",
+   "email":"first_last@gmail.com",
+   "password": "password",
+   "phone":"1234567789",
+   "gender":"Male",
+   "age":25
+}
+
+
+2. Signup kid API
+
+URL: http://localhost:3000/register/signup/kid
+Sample request body: 
+{
+   "first_name":"first",
+   "last_name":"last",
+   "username":"first_last",
+   "password": "password",
+   "gender":"Male",
+   "age":10
+}
+
+3. Login API
+
+URL: http://localhost:3000/register/login
+Sample request body:
+{
+    "username": "sagara1997@gmail.com",
+    "password": "xxxxx"
+}
