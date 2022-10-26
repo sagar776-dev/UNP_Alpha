@@ -6,6 +6,17 @@ const getCurrentDate = () => {
     return month + "/" + day + "/" + d1.getFullYear();
   };
 
+  const encryptAES = (text) => {
+    return hash.AES.encrypt(text, config.key.toString()).toString();
+  };
+  
+  const decryptAES = (text) => {
+    //console.log(hash.AES.decrypt(text, config.key.toString()).toString());
+    return hash.AES.decrypt(text, config.key.toString()).toString(hash.enc.Utf8);
+  };
+
   module.exports = {
     getCurrentDate,
+    encryptAES,
+    decryptAES
   };
