@@ -28,6 +28,30 @@ const kid = sequelize.define("kid", {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    street:{
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    school:{
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    grade:{
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    ethnicity:{
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    location:{
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    flag:{
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
     userid:{
         type: Sequelize.INTEGER,
         allowNull: false,
