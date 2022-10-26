@@ -13,6 +13,8 @@ const { post } = require("../routes/serach");
 const Parent = require("../model/parent");
 const Parent_kid_mapping = require("../model/parent_kid_mapping");
 
+const helper = require("../util/helper");
+
 let registerParent = async (postData) => {
   console.log(postData);
   let user = await users.findOne({ where: { username: postData.email } });
@@ -23,7 +25,7 @@ let registerParent = async (postData) => {
 
   await users.create({
     username: postData.email,
-    password: encryptAES(postData.password),
+    password: helper.encryptAES(postData.password),
     role: "parent",
   });
 
@@ -56,7 +58,7 @@ let registerKid = async (postData) => {
 
   await users.create({
     username: postData.username,
-    password: encryptAES(postData.password),
+    password: helper.encryptAES(postData.password),
     role: "kid",
   });
 
@@ -92,7 +94,7 @@ let login = async (postData) => {
   console.log(postData);
 
   let data = await users.findOne({ where: { username: postData.username } });
-  let decryptedpassword = decryptAES(data.password);
+  let decryptedpassword = helper.decryptAES(data.password);
   if (data === null) {
     throw "User does not exist";
   } else if (decryptedpassword !== postData.password) {
@@ -124,15 +126,6 @@ let viewParentById = async (id) => {
 
 let viewAllUsers = async () => {
   return await parent.findAll();
-};
-
-encryptAES = (text) => {
-  return hash.AES.encrypt(text, config.key.toString()).toString();
-};
-
-decryptAES = (text) => {
-  //console.log(hash.AES.decrypt(text, config.key.toString()).toString());
-  return hash.AES.decrypt(text, config.key.toString()).toString(hash.enc.Utf8);
 };
 
 module.exports = {
