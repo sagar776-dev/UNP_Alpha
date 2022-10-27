@@ -102,18 +102,31 @@ let login = async (postData) => {
   }
   let token;
   try {
-     token = jwt.sign({ id: postData.username }, config.key.toString(), {
+    token = jwt.sign({ id: postData.username }, config.key.toString(), {
       expiresIn: 86400,
     });
   } catch (e) {
     console.log();
   }
+  let profile;
+  let userInfo = await users.findOne({
+    where: { username: postData.username },
+  });
+  if (userInfo.role === "parent") {
+    profile = await parent.findOne({
+      where: { username: postData.username },
+    });
+  } else {
+    profile = await kid.findOne({
+      where: { username: postData.username },
+    });
+  }
+  profile.id = helper.encryptAES(profile.id);
 
   let message = {
     message: "Welcome " + postData.username + "!",
-    username: postData.username,
+    profile: profile,
     accessToken: token,
-    role: data.role,
   };
 
   return message;

@@ -31,6 +31,8 @@ const sendRequest = async (fromId, toId) => {
 };
 
 const acceptRequest = async (fromId, toId) => {
+  fromId = helper.decryptAES(fromId);
+  toId = helper.decryptAES(toId);
   await Relation.create({
     from: fromId,
     to: toId,
