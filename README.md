@@ -3,7 +3,6 @@ Team:
     Ashay Pable
     Anish Subedi
     Sagar Chakravarthy
-    Akshit Walia
     Farokh Cooper
     Kavitha Siratla
 

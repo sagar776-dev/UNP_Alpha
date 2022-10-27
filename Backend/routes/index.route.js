@@ -1,23 +1,8 @@
 const express = require('express');
-//const { app } = require('..');
-const registrationRoutes = require('./registration');
-const parents = require('./parents');
-const kid = require('./kid');
+const serach = require("./serach");
+const router = express.Router();
 
-// router.get('/', (req, res) => res.send('It works.'));
-// router.get('/registration/', (req, res) => res.send());
+router.get('/', (req, res) => res.send('It works.'));
+app.use("/serach", serach);
 
-const constructorMethod = (app) => {
-
-    app.use('/register', registrationRoutes);
-    app.use('/parents', parents);
-    app.use('/kid', kid);
-
-    app.use('*', (req, res) => {
-      res.status(404).json({error: 'Not found'});
-    });
-  };
-
-
-
-module.exports = constructorMethod;
+module.exports = router;
