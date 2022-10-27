@@ -7,7 +7,7 @@ const kid = require('../model/kid');
 const parent_kid = require('../model/parent_kid_mapping');
 
 const config = require('../config/settings.json');
-const { post } = require("../routes/serach");
+// const { post } = require("../routes/serach");
 const Parent = require("../model/parent");
 const Parent_kid_mapping = require("../model/parent_kid_mapping");
 

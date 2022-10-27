@@ -13,7 +13,7 @@ const kid = require("../model/kid");
 const Parent = require("../model/parent");
 const Relation = require("../model/relation");
 const config = require("../config/settings.json");
-const { post } = require("../routes/serach");
+// const { post } = require("../routes/serach");
 
 const sendRequest = async (fromId, toId) => {
   await Relation.create({

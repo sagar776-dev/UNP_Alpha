@@ -5,6 +5,7 @@ const kid = require('../model/kid');
 
 const serachKidByFilters = async (postData) => {
   try {
+    console.log("reached here")
     const parentInfolocation = await kid.findAll({ where: { location: postData.location } });
     // const parentInfograde = await kid.findOne({ where: { grade: postData.grade } });
     // const parentInfogender = await kid.findOne({ where: { location: postData.location } });

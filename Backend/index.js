@@ -5,8 +5,8 @@ const cors = require("cors");
 const config = require("./config");
 const dbconfig = require("./config/settings.json");
 
-const sequelize = require("./util/database");
-const users = require("./model/parent");
+// const sequelize = require("./util/database");
+// const users = require("./model/parent");
 
 const configRoutes = require('./routes/index.route');
 //sequelize
