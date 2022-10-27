@@ -1,0 +1,26 @@
+{
+  "name": "unp_alpha",
+  "version": "1.0.0",
+  "description": "Group Project by Group 9 Team:     Ashay Pable     Anish Subedi     Sagar Chakravarthy     Akshit Walia     Farokh Cooper     Kavitha Siratla",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm start --prefix Backend",
+    "client": "npm start --prefix unp_alpha_app",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashayp/UNP_Alpha.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashayp/UNP_Alpha/issues"
+  },
+  "homepage": "https://github.com/Ashayp/UNP_Alpha#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  }
+}
