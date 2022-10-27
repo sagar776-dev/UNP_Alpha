@@ -1,30 +1,20 @@
-const express = require("express");
-const http = require("http");
-const cors = require("cors");
+const express = require('express');
+const http = require('http');
+const cors = require('cors');
 
-const config = require("./config");
-const dbconfig = require("./config/settings.json");
+const config = require('./config');
 
-const sequelize = require("./util/database");
-const users = require("./model/parent");
 
-const configRoutes = require('./routes/index.route');
-sequelize
 const app = express();
-app.use(express.json());
-//app.use(cors());
+app.use(cors());
 
-// const routes = require("./routes/index.route");
-// app.use(routes);
 
-configRoutes(app);
+const routes = require('./routes/index.route');
+app.use(routes);
 
-console.log(dbconfig);
 
 const httpServer = http.createServer(app);
 httpServer.listen(config.port);
 console.log(`Server started at ${config.port}`);
-
-
 
 module.exports = { app };
