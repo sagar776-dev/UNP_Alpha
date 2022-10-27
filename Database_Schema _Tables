@@ -38,17 +38,4 @@ CREATE TABLE `kid` (
   CONSTRAINT `kid_userid` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-parent_kid_mapping Table
-
-CREATE TABLE `parent_kid_mapping` (
-  `id` int(11) NOT NULL,
-  `parent_id` int(11) NOT NULL,
-  `kid_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `kid_id_ref_idx` (`kid_id`),
-  KEY `parent_id_ref` (`parent_id`),
-  CONSTRAINT `kid_id_ref` FOREIGN KEY (`kid_id`) REFERENCES `kid` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `parent_id_ref` FOREIGN KEY (`parent_id`) REFERENCES `parent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
