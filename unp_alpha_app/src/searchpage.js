@@ -6,9 +6,9 @@ import { Layout, Menu } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
 function searchpage() {
-  useEffect(() => {
-    document.title = 'Search Page';
-  });
+  // useEffect(() => {
+  //   document.title = 'Search Page';
+  // });
   return (
     <div className="App">
       {/* <Search/> */}
@@ -86,4 +86,4 @@ function searchpage() {
   );
 }
 
-export default App;
+export default searchpage;
