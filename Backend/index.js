@@ -17,6 +17,9 @@ app.use(cors({
     origin: 'http://localhost:3000'
 }));
 
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 // const routes = require("./routes/index.route");
 // app.use(routes);
 
