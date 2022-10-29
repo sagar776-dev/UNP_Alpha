@@ -2,6 +2,12 @@ import './App.css';
 import SignUpForm from "./SignUpForm";
 import SignInForm from "./SignInForm";
 import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import './App.css';
+import Searchpage from './searchpage';
+import 'antd/dist/antd.css';
+import Login from './Login';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function Signup() {
@@ -14,11 +20,21 @@ function Signup() {
     navigate('/SignUpForm');
   };
 
+
+
   return (
-    <form onSubmit={handleSubmit}>
-      <input />
-      <button type="submit">Sign Up</button>
-    </form>
+    <BrowserRouter>
+      <div className="App">        
+        <Routes>
+          <Route path="/">
+            <Login />
+          </Route>
+          <Route path="/home">
+            <Searchpage />
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 function Signin() {
