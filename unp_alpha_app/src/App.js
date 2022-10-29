@@ -1,13 +1,14 @@
 import './App.css';
 import SignUpForm from "./SignUpForm";
 import SignInForm from "./SignInForm";
-import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+import GetDetailsForm from "./getdetails";
+import {Link, useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
 import './App.css';
 import Searchpage from './searchpage';
 import 'antd/dist/antd.css';
 import Login from './Login';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 function Signup() {
@@ -56,12 +57,16 @@ return (
             <li>
               <Link to="/SignUpForm">Sign Up</Link>
             </li>
+            <li>
+              <Link to="/GetDetailsForm">Get Details</Link>
+            </li>
           </ul>
         </nav>
 
         <Routes>
-          <Route path="/SignUpForm" element={<SignUpForm />} />
           <Route path="/SignInForm" element={<SignInForm />} />
+          <Route path="/SignUpForm" element={<SignUpForm />} />
+          <Route path="/GetDetailsForm" element={<GetDetailsForm />} />
         </Routes>
       </div>
     </div>
