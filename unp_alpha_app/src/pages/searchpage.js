@@ -1,16 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import Search from './components/search';
-import 'antd/dist/antd.css';
+import Search from '../components/search';
+import Messenger from "../components/messenger/Messenger";
+import 'antd/dist/antd.min.css';
 import { Layout, Menu } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
-function searchpage() {
+// function getItem(label, key, icon, children) {
+//   return {
+//     key,
+//     icon,
+//     children,
+//     label,
+//   };
+// }
+// const items = [
+//   getItem('Search', '1', <PieChartOutlined />),
+//   getItem('Profile', '3', <DesktopOutlined />),
+//   getItem('User', 'sub1', <UserOutlined />), 
+
+//   getItem('Files', '9', <FileOutlined />)
+// ];
+
+function Searchpage() {
+
   // useEffect(() => {
   //   document.title = 'Search Page';
   // });
+
+
+
+
+const changeTab = (tabName) => {
+    this.setState({ renderTab: tabName })
+}
+
   return (
-    <div className="App">
+    <div >
       {/* <Search/> */}
       <Layout>      
       <Header
@@ -47,25 +72,29 @@ function searchpage() {
         //   }),
         // )}
       >
-        <Menu.Item>                         
+        <Menu.Item children={<Search/>}>                                   
           Search
         </Menu.Item>
-        <Menu.Item>                 
+        <Menu.Item >                 
           Profile
+        </Menu.Item>
+        <Menu.Item children={<Messenger/>} >                 
+          Messenger
         </Menu.Item>
         <Menu.Item style={{
         position: 'absolute',
         bottom: 0,
         zIndex: 1,
         transition: 'all 0.2s',
-    }}>                    
+    }} onClick={() => this.changeTab('Login')} as='a' name='Login'
+    >                    
           Sign Out
         </Menu.Item>
       </Menu>
     </Sider>
       <Content
         style={{
-          // margin: '24px 16px 0',
+           margin: '24px 16px 0',
         }}
       >
         <div
@@ -86,4 +115,5 @@ function searchpage() {
   );
 }
 
-export default searchpage;
+
+export default Searchpage;

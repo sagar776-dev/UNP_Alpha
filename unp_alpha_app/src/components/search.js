@@ -19,8 +19,8 @@ function Search() {
     });
   }
   return (
-    <div>
-    <div className="App">
+    <div style={{margin:0, padding:0}}>
+    <div className="Search" >
     <h1 style={{marginBottom:20, fontSize:40}}>Search</h1>
     <Form  
     labelAlign='left'    

@@ -18,11 +18,9 @@ router
   })
   .get(async (req, res) => {
     res.status(404).json({"Error": "Not found"});
-<<<<<<< HEAD
-    });
-=======
+
   });
->>>>>>> 06a6695d34ed6f99562a617b4290e727319ba009
+
 
 router
   .route("/signup/kid")
@@ -36,11 +34,10 @@ router
   })
   .get(async (req, res) => {
     res.status(404).json({"Error": "Not found"});
-<<<<<<< HEAD
-    });
-=======
+
+
   });
->>>>>>> 06a6695d34ed6f99562a617b4290e727319ba009
+
 
 router
   .route("/login")
