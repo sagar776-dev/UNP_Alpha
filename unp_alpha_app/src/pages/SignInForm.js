@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
+import AuthContext from '../context/AuthContext';
 
 export default function SignInForm() {
 
+    const { setAuth } = useContext(AuthContext);
 // States for registration
 const [name, setName] = useState('');
 const [password, setPassword] = useState('');
@@ -39,72 +41,73 @@ setError(true);
 } else {
     let body = {
         "username": name,
-        "password": password
-    
+        "password": password    
      } 
      axios.post("http://localhost:8080/register/login", body)
-     .then(res=>{
+     .then(res=>{                        
         handleResponse(res.data);
+        const token = res.data.accesstoken;
+        const roles = res.data.roles;
+        setAuth({roles,token});
         setSubmitted(true);
         setError(false);
      })
-setSubmitted(true);
-setError(false);
+// setSubmitted(true);
+// setError(false);
 }
 };
 
 // Showing success message
 const successMessage = () => {
+
 return (
-<div
-className="success"
-style={{
-display: submitted ? '' : 'none',
-}}>
-<h1>{response.message}</h1>
-</div>
+    <div
+    className="success"
+    style={{
+    display: submitted ? '' : 'none',
+    }}>
+        <h1>{response.message}</h1>
+    </div>
 );
 };
 
 // Showing error message if error is true
 const errorMessage = () => {
 return (
-<div
-className="error"
-style={{
-display: error ? '' : 'none',
-}}>
-<h1>Please enter all the fields</h1>
-</div>
+    <div
+        className="error"
+        style={{
+        display: error ? '' : 'none',
+    }}>
+        <h1>Please enter all the fields</h1>
+    </div>
 );
 };
 
 return (
-<div className="form">
-<div>
-<h1>Login</h1>
-</div>
+    <div className="form">
+        <div>
+            <h1>Login</h1>
+        </div>
 
-{/* Calling to the methods */}
-<div className="messages">
-{errorMessage()}
-{successMessage()}
-</div>
+        <div className="messages">
+            {errorMessage()}
+            {successMessage()}
+        </div>
 
-<form>
-{/* Labels and inputs for form data */}
-<label className="label">User Name/ E-mail</label>
-<input onChange={handleName} className="input"
-value={name} type="text" />
+        <form>
+            <label className="label">User Name/ E-mail</label>
+            <input onChange={handleName} className="input"
+                value={name} type="text" />
 
-<label className="label">Password</label>
-<input onChange={handlePassword} className="input"
-value={password} type="password" />
+            <label className="label">Password</label>
+            <input onChange={handlePassword} className="input"
+                value={password} type="password" />
 
-<button onClick={handleSubmit} className="btn" type="submit">
-Submit
-</button>
-</form>
-</div>
-);
+            <button onClick={handleSubmit} className="btn" type="submit">
+                Submit
+            </button>
+        </form>
+    </div>
+    );
 }
