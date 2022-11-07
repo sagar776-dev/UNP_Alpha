@@ -1,76 +1,33 @@
 import './App.css';
-import SignUpForm from "./SignUpForm";
-import SignInForm from "./SignInForm";
-import GetDetailsForm from "./getdetails";
+import SignUpForm from "./pages/SignUpForm";
+import SignInForm from "./pages/SignInForm";
+import GetDetailsForm from "./pages/getdetails";
+import Profilepage from "./pages/Profile";
 import {Link, useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
 import './App.css';
-import Searchpage from './searchpage';
+import Searchpage from './pages/searchpage';
 import 'antd/dist/antd.css';
-import Login from './Login';
+import Messenger from './components/messenger/Messenger';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-
-function Signup() {
-  const navigate = useNavigate();
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    // 👇️ redirect to /contacts
-    navigate('/SignUpForm');
-  };
-
-
-
-  return (
-    <BrowserRouter>
-      <div className="App">        
-        <Routes>
-          <Route path="/">
-            <Login />
-          </Route>
-          <Route path="/home">
-            <Searchpage />
-          </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
-  );
-}
-function Signin() {
-  return <SignInForm />;
-}
-
-
-
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
-return ( 
-<div>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/SignInForm">Login</Link>
-            </li>
-            <li>
-              <Link to="/SignUpForm">Sign Up</Link>
-            </li>
-            <li>
-              <Link to="/GetDetailsForm">Get Details</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Routes>
-          <Route path="/SignInForm" element={<SignInForm />} />
-          <Route path="/SignUpForm" element={<SignUpForm />} />
-          <Route path="/GetDetailsForm" element={<GetDetailsForm />} />
-        </Routes>
-      </div>
-    </div>
-);
+  // const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  return (
+    // <BrowserRouter>
+      <Routes >
+        <Route path="/" element={<SignInForm />}/>            
+          <Route exact path="/register" element={<SignUpForm />}/>
+          <Route exact path="/home" element={user ? <Searchpage /> : <SignInForm />}/>
+          <Route exact path="/profile/:username" element={user ? <Profilepage /> : <SignInForm />}/>
+          <Route exact path="/login" element={<SignInForm />}/>      
+          <Route exact path="/messenger" element={<Messenger />}/>      
+      </Routes>      
+    // </BrowserRouter>
+  );
 }
+
 
 export default App;

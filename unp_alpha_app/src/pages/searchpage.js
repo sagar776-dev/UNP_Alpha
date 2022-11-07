@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import Search from './components/search';
-import 'antd/dist/antd.css';
+import Search from '../components/search';
+import Messenger from "../components/messenger/Messenger";
+import 'antd/dist/antd.min.css';
 import { Layout, Menu } from 'antd';
+import { Link } from 'react-router-dom';
 const { Header, Content, Footer, Sider } = Layout;
 
-function searchpage() {
-  // useEffect(() => {
-  //   document.title = 'Search Page';
-  // });
+
+function Searchpage() {
+
+
+const changeTab = (tabName) => {
+    this.setState({ renderTab: tabName })
+}
+
   return (
-    <div className="App">
+    <div >
       {/* <Search/> */}
       <Layout>      
       <Header
@@ -39,33 +44,34 @@ function searchpage() {
         theme="dark"
         mode="inline"                
         defaultSelectedKeys={['2']}      
-        // items={[UserOutlined,UserOutlined].map(
-        //   (icon, index) => ({            
-        //     key: String(index + 1),
-        //     icon: React.createElement(icon),
-        //     label: labels[index],
-        //   }),
-        // )}
+
       >
-        <Menu.Item>                         
-          Search
-        </Menu.Item>
-        <Menu.Item>                 
+        <Menu.Item key='search'>        
+          <Link to='/home'>Search </Link>                                     
+        </Menu.Item>        
+       <Menu.Item >                 
           Profile
         </Menu.Item>
+        
+        <Menu.Item key='messenger'>   
+          <Link to='/messenger'>Messenger </Link>                                                             
+        </Menu.Item>
+        <Link to='/login'>
         <Menu.Item style={{
         position: 'absolute',
         bottom: 0,
         zIndex: 1,
         transition: 'all 0.2s',
-    }}>                    
+    }}
+    >                    
           Sign Out
         </Menu.Item>
+        </Link>
       </Menu>
     </Sider>
       <Content
         style={{
-          // margin: '24px 16px 0',
+           margin: '24px 16px 0',
         }}
       >
         <div
@@ -86,4 +92,5 @@ function searchpage() {
   );
 }
 
-export default searchpage;
+
+export default Searchpage;
