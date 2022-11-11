@@ -29,7 +29,7 @@ const Profilepage: React.FC = () => {
 
   return (
     <div>
-      Parents Profile
+      Kid's Profile
     <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
       <Form.Item name={['first_name', 'first_name']} label="First Name">
         <Input />
@@ -37,23 +37,27 @@ const Profilepage: React.FC = () => {
       <Form.Item name={['last_name', 'last_name']} label="Last Name">
         <Input />
       </Form.Item>
-      <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
+      <Form.Item name={['user', 'username']} label="Username">
         <Input />
       </Form.Item>
       <Form.Item name={['user', 'gender']} label="Gender">
         <Input />
       </Form.Item>
-      <Form.Item name={['user', 'location']} label="Location">
+      <Form.Item name={['user', 'location']} label="location">
+        <Input />
+      </Form.Item>
+      <Form.Item name={['user', 'school']} label="school">
+        <Input />
+      </Form.Item>
+      <Form.Item name={['user', 'grade']} label="grade">
+        <Input />
+      </Form.Item>
+      <Form.Item name={['user', 'ethnicity']} label="ethnicity">
         <Input />
       </Form.Item>
       <Form.Item name={['user', 'age']} label="Age" rules={[{ type: 'number', min: 0, max: 99 }]}>
         <InputNumber />
       </Form.Item>
-      <Form.Item name={['user', 'phone']} label="Phone">
-        <InputNumber />
-      </Form.Item>
-
-      
       <Form.Item name={['user', 'bio']} label="Bio">
         <Input.TextArea />
       </Form.Item>

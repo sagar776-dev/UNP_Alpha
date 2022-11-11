@@ -3,6 +3,7 @@ import SignUpForm from "./pages/SignUpForm";
 import SignInForm from "./pages/SignInForm";
 import GetDetailsForm from "./pages/getdetails";
 import Profilepage from "./pages/Profile";
+import KidProfile from "./pages/KidProfile";
 import {Link, useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
 import './App.css';
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/messenger" element={<Messenger />}/>   
           <Route exact path="/inbox" element={<InboxPage />}/>      
           <Route exact path="/profile" element={<Profilepage />}/>      
+          <Route exact path="/Kidprofile" element={<KidProfile />}/>   
       </Routes>      
     // </BrowserRouter>
   );
