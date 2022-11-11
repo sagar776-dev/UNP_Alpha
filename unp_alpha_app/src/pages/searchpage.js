@@ -50,7 +50,10 @@ const changeTab = (tabName) => {
           <Link to='/home'>Search </Link>                                     
         </Menu.Item>        
        <Menu.Item >                 
-          Profile
+          <Link to='/profile'>Profile </Link>   
+        </Menu.Item>
+        <Menu.Item >                 
+          <Link to='/inbox'>Inbox </Link>    
         </Menu.Item>
         
         <Menu.Item key='messenger'>   
