@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
-export default function SignInForm() {
+import { Link } from 'react-router-dom';
+
+export default function SignUpForm() {
 
 // States for registration
 const [firstname, setFirstName] = useState('');
@@ -84,13 +86,7 @@ setError(true);
 // Showing success message
 const successMessage = () => {
 return (
-<div
-className="success"
-style={{
-display: submitted ? '' : 'none',
-}}>
-<h1>{response.message}</h1>
-</div>
+    <Link to='/home'/>
 );
 };
 
