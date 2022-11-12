@@ -36,6 +36,7 @@ const handleResponse = (e) => {
 // Handling the form submission
 const handleSubmit = (e) => {
 e.preventDefault();
+
 if (name === '' || password === '') {
 setError(true);
 } else {
@@ -85,7 +86,7 @@ return (
 };
 
 return (
-    <div className="form">
+    <div className="form form-login">
         <div>
             <h1>Login</h1>
         </div>

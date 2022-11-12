@@ -108,9 +108,9 @@ display: error ? '' : 'none',
 };
 
 return (
-<div className="form">
+<div className="form form-login">
 <div>
-<h1>User registration</h1>
+<h1>User Registration</h1>
 </div>
 
 {/* Calling to the methods */}
