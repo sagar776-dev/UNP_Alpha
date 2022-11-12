@@ -73,3 +73,7 @@
   .message-box {
     display: grid;
   }
+
+  .ant-card-body {
+    display: grid;
+}
