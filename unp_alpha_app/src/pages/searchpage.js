@@ -44,7 +44,6 @@ const changeTab = (tabName) => {
         theme="dark"
         mode="inline"                
         defaultSelectedKeys={['2']}      
-
       >
         <Menu.Item key='search'>        
           <Link to='/home'>Search </Link>                                     
