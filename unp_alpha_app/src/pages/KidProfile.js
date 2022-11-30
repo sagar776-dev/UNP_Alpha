@@ -86,6 +86,9 @@ onCollapse={(collapsed, type) => {
     <Link to='/Kidprofile'>Kid Profile </Link>   
   </Menu.Item>
   <Menu.Item >                 
+    <Link to='/ViewFriends'>View Friends </Link>   
+  </Menu.Item>
+  <Menu.Item >                 
     <Link to='/inbox'>Inbox </Link>    
   </Menu.Item>
   

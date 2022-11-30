@@ -58,6 +58,9 @@ const changeTab = (tabName) => {
         <Menu.Item >                 
           <Link to='/inbox'>Inbox </Link>    
         </Menu.Item>
+        <Menu.Item >                 
+    <Link to='/ViewFriends'>View Friends </Link>   
+  </Menu.Item>
         
         <Menu.Item key='messenger'>   
           <Link to='/messenger'>Messenger </Link>                                                             
