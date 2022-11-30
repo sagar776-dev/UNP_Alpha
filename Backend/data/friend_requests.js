@@ -5,8 +5,8 @@ const jwt = require("jsonwebtoken");
 
 const userData = require("../data/registration");
 
-const helper = require('../util/helper');
-const validation = require('../util/validation');
+const helper = require("../util/helper");
+const validation = require("../util/validation");
 
 const users = require("../model/users");
 const kid = require("../model/kid");
@@ -45,7 +45,20 @@ const acceptRequest = async (fromId, toId) => {
   return "Friend request sent successfully";
 };
 
-const rejectRequest = async (fromId, toId) => {};
+const rejectRequest = async (fromId, toId) => {
+  await Relation.create({
+    from: fromId,
+    to: toId,
+    status: "R",
+    since: helper.getCurrentDate(),
+  });
+
+  let requestCreated = await Relation.findOne({
+    where: { from: fromId, to: toId },
+  });
+  if (!requestCreated) throw "Problem sending the friend request";
+  return "Friend request sent successfully";
+};
 
 const getAllRequests = async (email) => {
   const parentInfo = await userData.viewParentById(email);
