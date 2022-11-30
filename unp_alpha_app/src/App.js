@@ -8,7 +8,9 @@ import {Link, useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
 import './App.css';
 import Searchpage from './pages/searchpage';
+import ViewFriends from './components/viewFriend';
 import InboxPage from './pages/inbox';
+
 
 import 'antd/dist/antd.css';
 import Messenger from './components/messenger/Messenger';
@@ -27,7 +29,8 @@ function App() {
           <Route exact path="/home" element={<Searchpage />}/>
           {/* <Route exact path="/profile/:username" element={user ? <Profilepage /> : <SignInForm />}/> */}
           <Route exact path="/profile/:username" element={<Profilepage />}/>
-          <Route exact path="/login" element={<SignInForm />}/>      
+          <Route exact path="/login" element={<SignInForm />}/>   
+          <Route exact path="/ViewFriends" element={<ViewFriends />}/>      
           <Route exact path="/messenger" element={<Messenger />}/>   
           <Route exact path="/inbox" element={<InboxPage />}/>      
           <Route exact path="/profile" element={<Profilepage />}/>      
