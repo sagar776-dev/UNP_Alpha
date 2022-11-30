@@ -44,7 +44,7 @@ export default function Messenger() {
    useEffect(() => {
      const getConversations = async () => {
        try {
-         const res = await axios.get("http://localhost:3001/byusers/" + user._id);
+         const res = await axios.get("http://localhost:8080/conversations/byusers/" + user._id);
          setConversations(res.data.message);         
        } catch (err) {
          console.log(err);
@@ -57,9 +57,12 @@ export default function Messenger() {
      const getMessages = async () => {
        try {
         //console.log(currentChat);
-         const res = await axios.get("http://localhost:3001/message/byconversation/" + currentChat?._id);
+        if(currentChat!==null)
+        {
+         const res = await axios.get("http://localhost:8080/message/byconversation/" + currentChat?._id);
          //console.log("message api res:",res);
          setMessages(res.data.message);
+        }
        } catch (err) {
          console.log(err);
        }
@@ -86,8 +89,7 @@ export default function Messenger() {
     });
 
     try {
-      const res = await axios.post("http://localhost:3001/message", message);
-      Console.log(res);
+      const res = await axios.post("http://localhost:8080/message", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {
@@ -143,7 +145,11 @@ export default function Messenger() {
                   </button>
                 </div>
               </>
-            ) : (
+            ) : (conversations.length===0 ?
+              <span className="noConversationText">
+                No Conversations available.
+              </span>
+              :
               <span className="noConversationText">
                 Select a chat.
               </span>

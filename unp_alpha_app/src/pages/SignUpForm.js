@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-
-export default function SignUpForm() {
+export default function SignInForm() {
 
 // States for registration
 const [firstname, setFirstName] = useState('');
@@ -86,7 +84,13 @@ setError(true);
 // Showing success message
 const successMessage = () => {
 return (
-    <Link to='/home'/>
+<div
+className="success"
+style={{
+display: submitted ? '' : 'none',
+}}>
+<h1>{response.message}</h1>
+</div>
 );
 };
 
@@ -104,9 +108,9 @@ display: error ? '' : 'none',
 };
 
 return (
-<div className="form">
+<div className="form form-login">
 <div>
-<h1>User registration</h1>
+<h1>User Registration</h1>
 </div>
 
 {/* Calling to the methods */}

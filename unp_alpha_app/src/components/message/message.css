@@ -24,9 +24,8 @@
       max-width: 300px;
   }
   
-  .messageBottom{
-      font-size: 12px;
-      margin-top: 10px;
+  .messageBottom{      
+      align-items: flex-start;
   }
   
   .message.own{

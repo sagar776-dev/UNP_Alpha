@@ -26,10 +26,10 @@
   margin: 10px auto;
   }
   
-  .messages{
+  /* .messages{
   display: flex;
   justify-content: center;
-  }
+  } */
   
   .error{
   display: block;
@@ -52,8 +52,36 @@
   body {
     background-color: #373e4a;
     color: rgb(145, 23, 23);
- 
+    /* padding: 40px; */
     font-family: Arial;
     text-align: center;
   }
    
+
+/* 
+  .message {
+    justify-self: end;
+    color: black;
+      border: aquamarine;
+      /* width: 300px; */
+      /* border: 1px solid green;
+      padding: 50px;
+      margin: 20px;
+      box-shadow: 12px 12px 2px 1px rgb(0 0 255 / 20%);
+  } */
+  
+  /* .message-box {
+    display: grid;
+  }  */
+
+  .ant-card-body {
+    display: grid;
+}
+
+.form-login{
+  background-color: cornflowerblue;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+}

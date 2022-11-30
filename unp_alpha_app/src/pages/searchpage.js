@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Search from '../components/search';
-//import Messenger from "../components/messenger/Messenger";
+import Search from '../components/search/search';
+import Messenger from "../components/messenger/Messenger";
 import 'antd/dist/antd.min.css';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
@@ -44,22 +44,28 @@ const changeTab = (tabName) => {
         theme="dark"
         mode="inline"                
         defaultSelectedKeys={['2']}      
+
       >
         <Menu.Item key='search'>        
           <Link to='/home'>Search </Link>                                     
         </Menu.Item>        
        <Menu.Item >                 
-          Profile
+          <Link to='/profile'>Parent Profile   </Link>   
+        </Menu.Item>
+        <Menu.Item >                 
+          <Link to='/Kidprofile'>Kid Profile </Link>   
+        </Menu.Item>
+        <Menu.Item >                 
+          <Link to='/inbox'>Inbox </Link>    
         </Menu.Item>
         
-        {/* <Menu.Item key='messenger'>   
+        <Menu.Item key='messenger'>   
           <Link to='/messenger'>Messenger </Link>                                                             
-        </Menu.Item> */}
+        </Menu.Item>
         <Link to='/login'>
         <Menu.Item style={{
         position: 'absolute',
         bottom: 0,
-        margin:20,
         zIndex: 1,
         transition: 'all 0.2s',
     }}

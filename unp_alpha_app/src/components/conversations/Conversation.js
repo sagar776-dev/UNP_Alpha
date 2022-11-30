@@ -4,7 +4,7 @@ import "./conversation.css";
 
 export default function Conversation({ conversation, currentUser }) {
   const [user, setUser] = useState(null);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  //const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     
@@ -31,11 +31,11 @@ export default function Conversation({ conversation, currentUser }) {
     <div className="conversation">
       <img
         className="conversationImg"
-        src={
-          user?.profilePicture
-            ? PF + user.profilePicture
-            : "./person/noAvatar.png"
-        }
+        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+          // user?.profilePicture
+          //   ? PF + user.profilePicture
+          //   : "./person/noAvatar.png"
+        
         alt="./person/noAvatar.png"
       />
       <span className="conversationName">{user?.username}</span>

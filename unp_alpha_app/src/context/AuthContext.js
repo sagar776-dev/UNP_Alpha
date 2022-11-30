@@ -6,7 +6,6 @@ const INITIAL_STATE = {
   error: false,
 };
 
-
 export const AuthContext = createContext(INITIAL_STATE);
 
 export const AuthContextProvider = ({ children }) => {
