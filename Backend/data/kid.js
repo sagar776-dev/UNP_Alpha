@@ -7,6 +7,7 @@ const serachKidByFilters = async (postData) => {
   try {
     console.log("Reached here inside data", postData)
     const parentInfolocation = await kid.findAll({ where: { location: postData.location } });
+    console.log("This is parentInfoLocation", parentInfolocation)
     // const parentInfograde = await kid.findOne({ where: { grade: postData.grade } });
     // const parentInfogender = await kid.findOne({ where: { location: postData.location } });
     // const parentInfoschool = await kid.findOne({ where: { location: postData.location } });

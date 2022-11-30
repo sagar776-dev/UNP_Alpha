@@ -9,7 +9,6 @@ router
   .route("/filters")
   .post(async (req, res) => {
     try {
-    console.log("reached here in routes >>>>>>", req.body)
       let message = await kidsData.serachKidByFilters(req.body);
       res.send({ message: message });
     } catch (error) {

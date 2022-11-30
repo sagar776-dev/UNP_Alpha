@@ -28,6 +28,12 @@ const kid = sequelize.define("kid", {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    grade:{
+        type: Sequelize.TINYINT,
+        allowNull: false,
+    },
+    
+
     street:{
         type: Sequelize.STRING,
         allowNull: false,
