@@ -6,6 +6,7 @@ import { Descriptions } from 'antd';
 import { Card } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Image } from 'antd';
+import { Space } from 'antd';
 
 function Search() {
   // Declare a new state variable, which we'll call "count"
@@ -97,6 +98,9 @@ function Search() {
     <Card title="Kids Info" bordered={false} style={{ width: "100%" }}>
     <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
     <br ></br>
+    <Space wrap>
+    <Button type="primary">Add parent as friend</Button>
+  </Space>
     <Descriptions.Item label="firstname">First Name: {item.first_name}</Descriptions.Item> <br />
         <Descriptions.Item label="lastname">Last Name: {item.last_name}</Descriptions.Item><br />
         <Descriptions.Item label="grade">Grade: {item.grade}</Descriptions.Item><br />
