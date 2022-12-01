@@ -1,5 +1,6 @@
 const axios = require("axios");
 const parent = require('../model/parent');
+const nodemailer = require("nodemailer");
 
 let mailOptions = {
   from: "alphaunp@gmail.com",
@@ -55,9 +56,6 @@ const sendEmail = async (emailId, subject, body) => {
   mailOptions.to = emailId;
   const transporter = nodemailer.createTransport({
     service: "gmail",
-    // host: "smtp.mail.yahoo.com",
-    // port: 465,
-    // secure: false,
     auth: {
       user: "alphaunp@gmail.com",
       pass: "vafjjfdkkzhialba",

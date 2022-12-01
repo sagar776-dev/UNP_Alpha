@@ -9,7 +9,11 @@ import 'antd/dist/antd.css';
 // import './index.css';
 import { Button, Form, Input, InputNumber } from 'antd';
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import Search from '../components/search';
+=======
+import Search from '../components/search/search';
+>>>>>>> ashay
 import Messenger from "../components/messenger/Messenger";
 import 'antd/dist/antd.min.css';
 import { Layout, Menu } from 'antd';
@@ -86,9 +90,12 @@ onCollapse={(collapsed, type) => {
     <Link to='/Kidprofile'>Kid Profile </Link>   
   </Menu.Item>
   <Menu.Item >                 
+<<<<<<< HEAD
     <Link to='/ViewFriends'>View Friends </Link>   
   </Menu.Item>
   <Menu.Item >                 
+=======
+>>>>>>> ashay
     <Link to='/inbox'>Inbox </Link>    
   </Menu.Item>
   

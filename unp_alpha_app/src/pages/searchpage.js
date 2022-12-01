@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Search from '../components/search';
+import Search from '../components/search/search';
 import Messenger from "../components/messenger/Messenger";
 import 'antd/dist/antd.min.css';
 import { Layout, Menu } from 'antd';
@@ -51,6 +51,12 @@ const changeTab = (tabName) => {
         </Menu.Item>        
        <Menu.Item >                 
           <Link to='/profile'>Parent Profile   </Link>   
+        </Menu.Item>
+        <Menu.Item >                 
+          <Link to='/Kidprofile'>Kid Profile </Link>   
+        </Menu.Item>
+        <Menu.Item >                 
+          <Link to='/inbox'>Inbox </Link>    
         </Menu.Item>
         <Menu.Item >                 
           <Link to='/Kidprofile'>Kid Profile </Link>   
