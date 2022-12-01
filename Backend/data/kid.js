@@ -33,9 +33,23 @@ const serachKidByLocation = async (postData) => {
   }
 };
 
+const serachKidAgeByName = async (postData) => {
+  try {
+    // console.log("Reached here inside data", postData)
+    const kidInfo = await kid.findOne({ where: { first_name: postData.name } });
+    if (!kidInfo) throw 'Could not find parent of that location!'
+    // console.log("finalresult",kidInfo )
+    return (kidInfo.age)
+    // return ("abc")
+  } catch (error) {
+    return error
+  }
+};
+
 
 module.exports = {
     serachKidByFilters,
-    serachKidByLocation
+    serachKidByLocation,
+    serachKidAgeByName
     
 };

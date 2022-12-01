@@ -1,5 +1,5 @@
 // jest.useFakeTimers()
-const { serachKidByLocation } = require('./kid');
+const { serachKidByLocation, serachKidAgeByName } = require('./kid');
 
 
 test('should fetch one kid by location', async() => {
@@ -13,14 +13,15 @@ test('should fetch one kid by location', async() => {
     
   });
     
-//   test('should fetch parent phone number by location', async() => {
-//     expect(await serachParentPhoneByEmail({
-//         "email":"sagara1997@gmail.com"
-//     })).toStrictEqual(
-//         "987654321"
-//     )
+  
+  test('should fetch kid age  by name', async() => {
+    expect(await serachKidAgeByName({
+        "name":"anish C"
+    })).toStrictEqual(
+   12
+    )
     
-//   });
+  });
     
 
   
