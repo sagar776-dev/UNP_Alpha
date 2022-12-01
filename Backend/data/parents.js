@@ -18,6 +18,26 @@ const serachParentByLocation = async (postData) => {
   }
 };
 
+const serachParentEmailByName = async (postData) => {
+  try {
+    let parentInfo = await parent.findOne({ where: { first_name: postData.name } });
+    if (!parentInfo) throw 'Could not find parent of that name!'
+    return parentInfo.email
+  } catch (error) {
+    return error
+  }
+};
+
+const serachParentPhoneByEmail = async (postData) => {
+  try {
+    let parentInfo = await parent.findOne({ where: { email: postData.email } });
+    if (!parentInfo) throw 'Could not find parent of that name!'
+    return parentInfo.phone
+  } catch (error) {
+    return error
+  }
+};
+
 const serachAllParentByLocation = async (postData) => {
   try {
     console.log("reached here123 ", postData)
@@ -67,6 +87,8 @@ const verifyEmail = async (email, token) => {
 module.exports = {
     serachParentByLocation,
     serachAllParentByLocation,
+    serachParentEmailByName,
+    serachParentPhoneByEmail,
     verifyEmail,
     sendEmail
 };
