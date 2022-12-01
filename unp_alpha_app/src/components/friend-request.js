@@ -43,8 +43,9 @@ function FriendRequest() {
   let getData = async () => {
     console.log("Headers ", config);
     let user = cookies.user;
+    console.log(user);
     return await axios.get(
-      `${env.backendUrl}api/request/getParentsNearby/${user.location}&${user.email}`,
+      `${env.backendUrl}api/request/getAllRequests/${user.id}`,
       config
     );
   };
@@ -66,19 +67,21 @@ function FriendRequest() {
       });
   };
 
-  const acceptRequest = (e)=>{
-    axios.post(`${env.backendUrl}api/request/acceptRequest`, e, config)
-    .then((res)=>{
-      console.log(res);
-    });
-  }
+  const acceptRequest = (e) => {
+    axios
+      .post(`${env.backendUrl}api/request/acceptRequest`, e, config)
+      .then((res) => {
+        console.log(res);
+      });
+  };
 
-  const rejectRequest = (e)=>{
-    axios.post(`${env.backendUrl}api/request/rejectRequest`, e, config)
-    .then((res)=>{
-      console.log(res);
-    });
-  }
+  const rejectRequest = (e) => {
+    axios
+      .post(`${env.backendUrl}api/request/rejectRequest`, e, config)
+      .then((res) => {
+        console.log(res);
+      });
+  };
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -88,44 +91,19 @@ function FriendRequest() {
     return (
       <div>
         <div>
-          <h2>Parents Nearby</h2>
-          <table class="table request-table">
-            <thead>
-              <th>Name</th>
-              <th>Location</th>
-              <th>Send Request</th>
-            </thead>
-            <tbody>
-              {parents.map((parent) => (
-                <tr style={{ padding: "5px" }}>
-                  <td>{parent.first_name + " " + parent.last_name}</td>
-                  <td>{parent.location}</td>
-                  <td>
-                    <button
-                      class="btn btn-success btn-sml"
-                      onClick={() => sendRequest(parent)}
-                    >
-                      Send
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div>
           <h2>Friends</h2>
           <table class="table request-table">
             <thead>
               <th>Name</th>
-              <th>Status</th>
+              <th>Location</th>
+              <th>Block</th>
             </thead>
             <tbody>
               {friends.map((friend) => (
                 <tr style={{ padding: "5px" }}>
-                  <td>{friend.toName}</td>
-                  <td>{friend.status}</td>
+                  <td>{friend.first_name+' '+friend.last_name}</td>
+                  <td>{friend.location}</td>
+                  <td><button onClick={()=>rejectRequest(friend)}>Block</button></td>
                 </tr>
               ))}
             </tbody>
@@ -137,31 +115,19 @@ function FriendRequest() {
           <table class="table request-table">
             <thead>
               <th>Name</th>
+              <th>Location</th>
               <th>Status</th>
               <th>Accept</th>
               <th>Reject</th>
             </thead>
             <tbody>
-              {requests.map((request) => (
+              {requests.map((friend) => (
                 <tr style={{ padding: "5px" }}>
-                  <td>{request.first_name + " " + request.last_name}</td>
-                  <td>{request.status}</td>
-                  <td>
-                    <button
-                      class="btn btn-success btn-sml"
-                      onClick={() => acceptRequest(request)}
-                    >
-                      Accept
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      class="btn btn-success btn-sml"
-                      onClick={() => rejectRequest(request)}
-                    >
-                      Reject
-                    </button>
-                  </td>
+                  <td>{friend.first_name+' '+friend.last_name}</td>
+                  <td>{friend.location}</td>
+                  <td>{friend.status}</td>
+                  <td><button onClick={()=>acceptRequest(friend)}>Accept</button></td>
+                  <td><button onClick={()=>rejectRequest(friend)}>Reject</button></td>
                 </tr>
               ))}
             </tbody>

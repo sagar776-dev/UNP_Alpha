@@ -169,6 +169,10 @@ let viewAllUsers = async () => {
   return await parent.findAll();
 };
 
+let logout = async()=>{
+  
+}
+
 module.exports = {
   registerParent,
   registerKid,

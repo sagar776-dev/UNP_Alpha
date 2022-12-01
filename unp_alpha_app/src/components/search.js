@@ -31,7 +31,8 @@ function Search() {
     console.log(cookies);
     let body = {
       "from": cookies.user.id,
-      "to": id
+      "to": id,
+      "fromName": cookies.user.first_name+' '+cookies.user.last_name
     }
     axios
       .post("http://localhost:8080/api/request/sendRequest", body)

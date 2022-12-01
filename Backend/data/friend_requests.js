@@ -20,11 +20,15 @@ const Sequelize = require("sequelize");
 const { QueryTypes } = require("sequelize");
 
 const sendRequest = async (request) => {
+  let parentData = await Parent.findOne({where: { id: request.to }});
+  console.log("Parent Data ",parentData.first_name);
   await Relation.create({
     from: request.from,
     to: request.to,
     status: "P",
     since: null,
+    toName: parentData.first_name + " " + parentData.last_name,
+    fromName: request.fromName,
   });
 
   let requestCreated = await Relation.findOne({
@@ -51,27 +55,38 @@ const rejectRequest = async (req) => {
   request.status = "R";
   request.since = null;
   await request.save();
-  return "Friend request accepted";
+  return "Friend request rejected";
 };
 
 const getAllRequests = async (id) => {
   let requests = await sequelize.query(
-    `SELECT r.from, r.to, r.status, p.first_name, p.last_name, p.location FROM relation r, parent p where r.to = ${id} and p.id=r.from and r.status='P'`,
+    `SELECT r.from, r.to, r.status, p.first_name, p.last_name, p.location, r.status FROM relation r, parent p
+     where r.to = ${id} and p.id=r.from and r.status='P'`,
     { type: QueryTypes.SELECT }
   );
+  
   return requests;
 };
 
-const getAllFriends = async (email) => {
-  const parentInfo = await userData.viewParentById(email);
-  let requests = await Relation.findAll({
-    where: Sequelize.or({ from: parentInfo.id }, { to: parentInfo.id }),
-  });
-  return requests;
+const getAllFriends = async (id) => {
+  let res = [];
+  let requests1 = await sequelize.query(
+    `SELECT r.from, r.to, r.status, p.first_name, p.last_name, p.location, r.status FROM relation r, parent p
+     where r.to = ${id} and p.id=r.from and r.status='A'`,
+    { type: QueryTypes.SELECT }
+  );
+  let requests2 = await sequelize.query(
+    `SELECT r.from, r.to, r.status, p.first_name, p.last_name, p.location, r.status FROM relation r, parent p
+     where r.from = ${id} and p.id=r.to and r.status='A'`,
+    { type: QueryTypes.SELECT }
+  );
+  res = res.concat(requests1)
+  res = res.concat(requests2);
+  return res;
 };
 
 const getAllParentsByLocation = async (location, email) => {
-  let parent = await Parent.findOne({where: {email: email}});
+  let parent = await Parent.findOne({ where: { email: email } });
   let parents = await Parent.findAll({ where: { location: location } });
   let user = await Parent.findOne({ where: { email: email } });
   let friends = await getAllFriends(email);
@@ -98,7 +113,7 @@ const getAllParentsByLocation = async (location, email) => {
   //   for (let request of requests) {
   //   }
   // }
-  return {parents: parents, requests: requests};
+  return { parents: parents, requests: requests };
 };
 
 module.exports = {

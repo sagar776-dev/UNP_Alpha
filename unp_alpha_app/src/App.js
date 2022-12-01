@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Searchpage from './pages/searchpage';
 import InboxPage from './pages/inbox';
-import ViewFriends from './pages/friend-request';
+import ViewFriends from './pages/viewFriendsPage';
 
 
 import 'antd/dist/antd.css';

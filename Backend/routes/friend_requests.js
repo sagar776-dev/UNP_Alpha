@@ -10,9 +10,15 @@ const relationsData = data.relation;
 router.route("/getAllRequests/:id").get(async (req, res) => {
   try {
     let id = req.params.id;
+    let friends = await relationsData.getAllFriends(id);
     let requests = await relationsData.getAllRequests(id);
-    res.json({ requests: requests });
+    let result = {
+      friends: friends,
+      requests: requests
+    }
+    res.json(result);
   } catch (error) {
+    console.log(error);
     res.status(404).send({ error: error });
   }
 });
@@ -30,13 +36,15 @@ router.route("/getAllFriends/:email").get(async (req, res) => {
 
 router.route("/getParentsNearby/:location&:email").get(async (req, res) => {
   try {
-    console.log(req.params.location + " " + req.params.email);
-    let jwtData = jwt.getDataFromToken(req);
-    let result = await relationsData.getAllParentsByLocation(
-      req.params.location,
-      jwtData.id
-    );
+    // console.log(req.params.location + " " + req.params.email);
+    // let jwtData = jwt.getDataFromToken(req);
+    // let result = await relationsData.getAllParentsByLocation(
+    //   req.params.location,
+    //   jwtData.id
+    // );
+    let result = {};
     let friends = await relationsData.getAllFriends(req.params.email);
+    console.log(friends);
     result.friends = friends;
     res.json(result);
   } catch (error) {

@@ -1,7 +1,12 @@
 const axios = require("axios");
 const parent = require('../model/parent');
 
-
+let mailOptions = {
+  from: "alphaunp@gmail.com",
+  to: "",
+  subject: "",
+  text: "",
+};
 
 const serachParentByLocation = async (postData) => {
   try {
