@@ -90,10 +90,17 @@ function FriendRequest() {
   } else {
     return (
       <div>
-        <div>
+        <div >
           <h2>Friends</h2>
           <table class="table request-table">
             <thead>
+            <link
+               href="https://fonts.googleapis.com/css?family=Rock+Salt"
+               rel="stylesheet"
+               type="text/css" />
+
+            <link href="friend-request-style.css" rel="stylesheet" />
+
               <th>Name</th>
               <th>Location</th>
               <th>Block</th>
