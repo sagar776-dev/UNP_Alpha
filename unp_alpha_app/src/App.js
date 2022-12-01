@@ -8,8 +8,8 @@ import {Link, useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
 import './App.css';
 import Searchpage from './pages/searchpage';
-import ViewFriends from './components/viewFriend';
 import InboxPage from './pages/inbox';
+import ViewFriends from './pages/viewFriendsPage';
 
 
 import 'antd/dist/antd.css';

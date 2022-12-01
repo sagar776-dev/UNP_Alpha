@@ -13,6 +13,7 @@ router
       let message = await registrationData.registerParent(req.body);
       res.send({ message: message });
     } catch (error) {
+      console.log(error);
       res.send({ error: error });
     }
   })
@@ -48,6 +49,7 @@ router
       // req.session.username = req.body.username;
       res.send(message);
     } catch (error) {
+      console.log(error);
       res.send({ error: error });
     }
   })

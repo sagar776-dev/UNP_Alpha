@@ -15,16 +15,23 @@ const Relation = sequelize.define("relation", {
     status:{
         type: Sequelize.STRING,
         allowNull: false,
-        primaryKey: true
     },
     since:{
-        type: Sequelize.STRING,
+        type: Sequelize.DATEONLY,
         allowNull: true,
+    },
+    fromName:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    toName:{
+        type: Sequelize.STRING,
+        allowNull: false
     }
 }, 
 {
     tableName: "relation",
     timestamps: false
-})
+});
 
 module.exports = Relation;
