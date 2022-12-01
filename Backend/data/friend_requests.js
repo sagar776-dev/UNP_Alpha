@@ -2,6 +2,7 @@ const axios = require("axios");
 const hash = require("crypto-js");
 const session = require("express-session");
 const jwt = require("jsonwebtoken");
+const sequelize = require("../util/database");
 
 const userData = require("../data/registration");
 
@@ -13,68 +14,91 @@ const kid = require("../model/kid");
 const Parent = require("../model/parent");
 const Relation = require("../model/relation");
 const config = require("../config/settings.json");
-const { post } = require("../routes/serach");
 
-const sendRequest = async (fromId, toId) => {
+const Sequelize = require("sequelize");
+
+const { QueryTypes } = require("sequelize");
+
+const sendRequest = async (request) => {
   await Relation.create({
-    from: fromId,
-    to: toId,
+    from: request.from,
+    to: request.to,
     status: "P",
     since: null,
   });
 
   let requestCreated = await Relation.findOne({
-    where: { from: fromId, to: toId },
+    where: { from: request.from, to: request.to },
   });
   if (!requestCreated) throw "Problem sending the friend request";
   return "Friend request sent successfully";
 };
 
-const acceptRequest = async (fromId, toId) => {
-  await Relation.create({
-    from: fromId,
-    to: toId,
-    status: "A",
-    since: helper.getCurrentDate(),
+const acceptRequest = async (req) => {
+  let request = await Relation.findOne({
+    where: { from: req.from, to: req.to },
   });
-
-  let requestCreated = await Relation.findOne({
-    where: { from: fromId, to: toId },
-  });
-  if (!requestCreated) throw "Problem sending the friend request";
-  return "Friend request sent successfully";
+  request.status = "A";
+  request.since = helper.getCurrentDate();
+  await request.save();
+  return "Friend request accepted";
 };
 
-const rejectRequest = async (fromId, toId) => {
-  await Relation.create({
-    from: fromId,
-    to: toId,
-    status: "R",
-    since: helper.getCurrentDate(),
+const rejectRequest = async (req) => {
+  let request = await Relation.findOne({
+    where: { from: req.from, to: req.to },
   });
-
-  let requestCreated = await Relation.findOne({
-    where: { from: fromId, to: toId },
-  });
-  if (!requestCreated) throw "Problem sending the friend request";
-  return "Friend request sent successfully";
+  request.status = "R";
+  request.since = null;
+  await request.save();
+  return "Friend request accepted";
 };
 
-const getAllRequests = async (email) => {
-  const parentInfo = await userData.viewParentById(email);
-  let requests = await Relation.findAll({ where: { location: location } });
+const getAllRequests = async (id) => {
+  let requests = await sequelize.query(
+    `SELECT r.from, r.to, r.status, p.first_name, p.last_name, p.location FROM relation r, parent p where r.to = ${id} and p.id=r.from and r.status='P'`,
+    { type: QueryTypes.SELECT }
+  );
   return requests;
 };
 
 const getAllFriends = async (email) => {
   const parentInfo = await userData.viewParentById(email);
-  let requests = await Relation.findAll({ where: { location: location } });
+  let requests = await Relation.findAll({
+    where: Sequelize.or({ from: parentInfo.id }, { to: parentInfo.id }),
+  });
   return requests;
 };
 
-const getAllParentsByLocation = async (location) => {
+const getAllParentsByLocation = async (location, email) => {
+  let parent = await Parent.findOne({where: {email: email}});
   let parents = await Parent.findAll({ where: { location: location } });
-  return parents;
+  let user = await Parent.findOne({ where: { email: email } });
+  let friends = await getAllFriends(email);
+  let requests = await getAllRequests(parent.id);
+
+  for (let friend of friends) {
+    if (friend.status === "P") {
+      friend.status = "Pending";
+    }
+    if (friend.status === "A") {
+      friend.status = "Accepted";
+    }
+    if (friend.status === "R") {
+      friend.status = "Blocked";
+    }
+  }
+
+  friendMap = {};
+  for (let friend of friends) {
+    friendMap["friend"];
+  }
+
+  // for (let parent of parents) {
+  //   for (let request of requests) {
+  //   }
+  // }
+  return {parents: parents, requests: requests};
 };
 
 module.exports = {

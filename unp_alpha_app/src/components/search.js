@@ -8,14 +8,16 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Image } from "antd";
 import { Space } from "antd";
 
+import { useCookies } from "react-cookie";
+
 function Search() {
   // Declare a new state variable, which we'll call "count"
   const [data, setData] = useState();
+  const [cookies, setCookie] = useCookies(["user"]);
   const onFinish = (e) => {
     console.log("reached here", e);
     axios
       .post("http://localhost:8080/api/kid/filters", e)
-
       .then((response) => {
         console.log("response", response.data);
         setData(response.data);
@@ -25,7 +27,22 @@ function Search() {
       });
   };
 
-  
+  const sendRequest = (id) => {
+    console.log(cookies);
+    let body = {
+      "from": cookies.user.id,
+      "to": id
+    }
+    axios
+      .post("http://localhost:8080/api/request/sendRequest", body)
+      .then((res) => {
+        alert("Request sent!!");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div style={{ margin: 0, padding: 0 }}>
       <div className="Search">
@@ -104,7 +121,7 @@ function Search() {
                         />
                         <br></br>
                         <Space wrap>
-                          <Button type="primary">Add parent as friend</Button>
+                          <Button type="primary" onClick={() => sendRequest(item.parentid)}>Add parent as friend</Button>
                         </Space>
                         <Descriptions.Item label="firstname">
                           First Name: {item.first_name}

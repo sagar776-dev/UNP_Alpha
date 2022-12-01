@@ -67,14 +67,14 @@ function FriendRequest() {
   };
 
   const acceptRequest = (e)=>{
-    axios.post(`${backendUrl}api/request/acceptRequest`, e, config)
+    axios.post(`${env.backendUrl}api/request/acceptRequest`, e, config)
     .then((res)=>{
       console.log(res);
     });
   }
 
   const rejectRequest = (e)=>{
-    axios.post(`${backendUrl}api/request/rejectRequest`, e, config)
+    axios.post(`${env.backendUrl}api/request/rejectRequest`, e, config)
     .then((res)=>{
       console.log(res);
     });
