@@ -16,10 +16,6 @@ router
       res.send({ error: error });
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json({"Error": "Not found"});
-
-  });
 
 
 router
@@ -32,11 +28,6 @@ router
       res.send({ error: error });
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json({"Error": "Not found"});
-
-
-  });
 
 
 router
@@ -51,9 +42,6 @@ router
       res.send({ error: error });
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json({"Error": "Not found"});
-  });
 
 router.route("/getAllUsers").get(async (req, res) => {
   let data = await registrationData.viewAllUsers();
@@ -66,6 +54,6 @@ router.route("/getParentById/:id").get(async (req, res) => {
 });
 
 //Creates a new post
-router.post("/login", async (req, res) => {});
+//router.post("/login", async (req, res) => {});
 
 module.exports = router;

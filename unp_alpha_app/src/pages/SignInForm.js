@@ -5,6 +5,7 @@ import AuthContext from '../context/AuthContext';
 export default function SignInForm() {
 
     const { setAuth } = useContext(AuthContext);
+    
 // States for registration
 const [name, setName] = useState('');
 const [password, setPassword] = useState('');
@@ -49,7 +50,7 @@ setError(true);
         handleResponse(res.data);
         const token = res.data.accesstoken;
         const roles = res.data.roles;
-        setAuth({roles,token});
+        setAuth(res.data.user);
         setSubmitted(true);
         setError(false);
      })

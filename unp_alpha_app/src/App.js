@@ -13,25 +13,26 @@ import InboxPage from './pages/inbox';
 import 'antd/dist/antd.css';
 import Messenger from './components/messenger/Messenger';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-// import { AuthContext } from "./context/AuthContext";
+ import { AuthContext } from "./context/AuthContext";
 
 function App() {
-  // const navigate = useNavigate();
-  // const { user } = useContext(AuthContext);
+   //const navigate = useNavigate();
+   const { user } = useContext(AuthContext);
   return (
     // <BrowserRouter>
       <Routes >
         <Route path="/" element={<SignInForm />}/>            
           <Route exact path="/register" element={<SignUpForm />}/>
           {/* <Route exact path="/home" element={user ? <Searchpage /> : <SignInForm />}/> */}
-          <Route exact path="/home" element={<Searchpage />}/>
+          <Route exact path="/home" element={user ? <Searchpage /> : <SignInForm />}/>
           {/* <Route exact path="/profile/:username" element={user ? <Profilepage /> : <SignInForm />}/> */}
-          <Route exact path="/profile/:username" element={<Profilepage />}/>
+          <Route exact path="/profile/:username" element={user ? <Profilepage />: <SignInForm />}/>
           <Route exact path="/login" element={<SignInForm />}/>      
-          <Route exact path="/messenger" element={<Messenger />}/>   
-          <Route exact path="/inbox" element={<InboxPage />}/>      
-          <Route exact path="/profile" element={<Profilepage />}/>      
-          <Route exact path="/Kidprofile" element={<KidProfile />}/>   
+          <Route exact path="/messenger" element={user ? <Messenger />: <SignInForm />}/>   
+          <Route exact path="/inbox" element={user ? <InboxPage />: <SignInForm />}/>      
+          <Route exact path="/profile" element={user ? <Profilepage />: <SignInForm />}/>      
+          <Route exact path="/Kidprofile" element={user ? <KidProfile />: <SignInForm />}/>   
+          <Route exact path="/verification" element={user.isEmailVerified ? <EmailVerification />: <SignInForm />}/>
       </Routes>      
     // </BrowserRouter>
   );
