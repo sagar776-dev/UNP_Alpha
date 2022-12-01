@@ -22,11 +22,12 @@ const kid = require('../model/kid');
 
 const serachKidByFilters = async (postData) => {
   try {
-    console.log("Reached here inside data", postData)
+    // console.log("Reached here inside data", postData)
     const parentInfolocation = await kid.findOne({ where: { location: postData.location } });
     if (!parentInfolocation) throw 'Could not find parent of that location!'
-    console.log("finalresult",parentInfolocation )
+    // console.log("finalresult",parentInfolocation )
     return (parentInfolocation)
+    // return ("abc")
   } catch (error) {
     return error
   }
