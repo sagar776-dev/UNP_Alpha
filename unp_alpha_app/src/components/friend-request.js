@@ -4,7 +4,6 @@ import "antd/dist/antd.css";
 import { Button, Checkbox, Form, Input } from "antd";
 import { Descriptions } from "antd";
 import env from "../environment.json";
-
 import { useCookies } from "react-cookie";
 
 function FriendRequest() {

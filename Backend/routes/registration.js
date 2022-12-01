@@ -18,10 +18,8 @@ router
     }
   })
   .get(async (req, res) => {
-    res.status(404).json({"Error": "Not found"});
-
+    res.status(404).json({ Error: "Not found" });
   });
-
 
 router
   .route("/signup/kid")
@@ -34,11 +32,8 @@ router
     }
   })
   .get(async (req, res) => {
-    res.status(404).json({"Error": "Not found"});
-
-
+    res.status(404).json({ Error: "Not found" });
   });
-
 
 router
   .route("/login")
@@ -54,7 +49,7 @@ router
     }
   })
   .get(async (req, res) => {
-    res.status(404).json({"Error": "Not found"});
+    res.status(404).json({ Error: "Not found" });
   });
 
 router.route("/getAllUsers").get(async (req, res) => {
@@ -68,6 +63,16 @@ router.route("/getParentById/:id").get(async (req, res) => {
 });
 
 //Creates a new post
-router.post("/login", async (req, res) => {});
+router.route("/verify/:email&:token").get(async (req, res) => {
+  try {
+    console.log(req.params.token + " " + req.params.email);
+    let result = await registrationData.verifyEmail(req.params.email, req.params.token);
+    res.json({"Message": "Email verified"});
+    return;
+  } catch (error) {
+    console.log(error);
+    res.send({ error: error });
+  }
+});
 
 module.exports = router;

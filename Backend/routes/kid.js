@@ -12,13 +12,11 @@ router
       let message = await kidsData.serachKidByFilters(req.body);
       res.send({ message: message });
     } catch (error) {
-      res.send({error: error});
+      res.send({ error: error });
     }
   })
   .get(async (req, res) => {
     res.status(404).json(e);
   });
-
-
 
 module.exports = router;

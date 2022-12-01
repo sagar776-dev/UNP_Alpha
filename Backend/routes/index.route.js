@@ -14,8 +14,8 @@ const constructorMethod = (app) => {
 
     
     console.log("Index router");
-    // app.use('/api', jwt.validateUser);
-    // app.use('/api/kid', auth.validateTimeForKidAccess);
+    app.use('/api', jwt.validateUser);
+    app.use('/api', jwt.authorizeUser);
 
     app.use('/register', registrationRoutes);
     app.use('/api/parents', parents);

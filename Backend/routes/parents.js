@@ -35,7 +35,17 @@ router
 //    res.status(404).json(e);
 //  });
 
-
+router
+  .route("/sendemail")
+  .post(async (req, res) => {
+    try {
+      let data = req.body;
+      let res = parentsData.sendEmail(data.mailId, data.subject, data.body);
+      res.json({"message": "Email sent"});
+    } catch (error) {
+      res.send({error: error});
+    }
+  });
 
   
 

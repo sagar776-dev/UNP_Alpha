@@ -59,9 +59,9 @@ let registerParent = async (postData) => {
   console.log("Token ", token);
   console.log("Email ", postData.email);
   let url =
-    "http://localhost:8080/api/parents/verify/" + postData.email + "&" + token;
+    "http://localhost:8080/register/verify/" + postData.email + "&" + token;
   emailService.sendEmail(
-    "sagara1997@gmail.com",
+    postData.email,
     "Verify your Email for unp_alpha ",
     "Click on the below URL to verify your EmailID\n" + url
   );
@@ -94,7 +94,7 @@ let registerKid = async (postData) => {
     age: postData.age,
     gender: postData.gender,
     userid: userInserted.id,
-    parentid: postData.parentid
+    parentid: postData.parentid,
   });
 
   let kidInserted = await kid.findOne({
@@ -160,6 +160,17 @@ let login = async (postData) => {
   return message;
 };
 
+const verifyEmail = async (email, token) => {
+  let data = await parent.findOne({ where: { email: email } });
+  if (data.token === token) {
+    data.isEmailVerified = true;
+    await data.save();
+    return "Email Verified";
+  } else {
+    throw "Something went wrong!!";
+  }
+};
+
 let viewParentById = async (id) => {
   let data = await parent.findOne({ where: { email: id } });
   return data;
@@ -169,9 +180,7 @@ let viewAllUsers = async () => {
   return await parent.findAll();
 };
 
-let logout = async()=>{
-  
-}
+let logout = async () => {};
 
 module.exports = {
   registerParent,
@@ -179,4 +188,5 @@ module.exports = {
   login,
   viewAllUsers,
   viewParentById,
+  verifyEmail
 };
