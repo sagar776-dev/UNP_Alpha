@@ -29,7 +29,7 @@ exports.authorizeUser = async (req, res, next) => {
   console.log(data);
   if (data.type === "parent") {
     let parentData = await parent.findOne({ where: { email: data.id } });
-    console.log("authorize User ", parentData);
+    console.log("authorize User ", parentData.isEmailVerified);
     if (!parentData.isEmailVerified) {
       res.json({ Error: "Please verify your Email" });
       return;

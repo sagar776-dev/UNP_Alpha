@@ -72,12 +72,12 @@ const getAllFriends = async (id) => {
   let res = [];
   let requests1 = await sequelize.query(
     `SELECT r.from, r.to, r.status, p.first_name, p.last_name, p.location, r.status FROM relation r, parent p
-     where r.to = ${id} and p.id=r.from and r.status='A'`,
+     where r.to = ${id} and p.id=r.to and r.status='A'`,
     { type: QueryTypes.SELECT }
   );
   let requests2 = await sequelize.query(
     `SELECT r.from, r.to, r.status, p.first_name, p.last_name, p.location, r.status FROM relation r, parent p
-     where r.from = ${id} and p.id=r.to and r.status='A'`,
+     where r.from = ${id} and p.id=r.from and r.status='A'`,
     { type: QueryTypes.SELECT }
   );
   res = res.concat(requests1)
