@@ -46,10 +46,6 @@ const Parent = sequelize.define(
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    location: {
-      type: Sequelize.STRING,
-      allowNull: true,
-    },
     token: {
       type: Sequelize.STRING,
       allowNull: true,

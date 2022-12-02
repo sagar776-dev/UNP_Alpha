@@ -10,6 +10,7 @@ import './App.css';
 import Searchpage from './pages/searchpage';
 import InboxPage from './pages/inbox';
 import ViewFriends from './pages/viewFriendsPage';
+import KidSignUp from './pages/kidSignUpForm';
 
 
 import 'antd/dist/antd.css';
@@ -25,6 +26,7 @@ function App() {
       <Routes >
         <Route path="/" element={<SignInForm />}/>            
           <Route exact path="/register" element={<SignUpForm />}/>
+          <Route exact path="/registerkid" element={<KidSignUp />}/>
           {/* <Route exact path="/home" element={user ? <Searchpage /> : <SignInForm />}/> */}
           <Route exact path="/home" element={<Searchpage />}/>
           {/* <Route exact path="/profile/:username" element={user ? <Profilepage /> : <SignInForm />}/> */}

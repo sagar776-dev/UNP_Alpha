@@ -94,20 +94,25 @@ let registerKid = async (postData) => {
     age: postData.age,
     gender: postData.gender,
     userid: userInserted.id,
+    location: postData.location,
+    street: postData.street,
+    school: postData.grade,
+    grade: postData.grade,
+    ethnicity: postData.ethnicity,
     parentid: postData.parentid,
   });
 
-  let kidInserted = await kid.findOne({
-    where: { username: postData.username },
-  });
-  let parentInserted = await parent.findOne({
-    where: { email: postData.email },
-  });
+  // let kidInserted = await kid.findOne({
+  //   where: { username: postData.username },
+  // });
+  // let parentInserted = await parent.findOne({
+  //   where: { email: postData.email },
+  // });
 
-  await Parent_kid_mapping.create({
-    parent_id: parentInserted.id,
-    kid_id: kidInserted.id,
-  });
+  // await Parent_kid_mapping.create({
+  //   parent_id: parentInserted.id,
+  //   kid_id: kidInserted.id,
+  // });
 
   return "Kid registered succussefully";
 };
