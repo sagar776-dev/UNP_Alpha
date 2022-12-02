@@ -3,6 +3,9 @@ const express = require('express');
 const registrationRoutes = require('./registration');
 const parents = require('./parents');
 const kid = require('./kid');
+const request = require('./friend_requests');
+const jwt = require('../middleware/jwt');
+const auth = require('../middleware/auth');
 const conversations = require('./conversations');
 const message = require('./messages');
 
@@ -11,7 +14,15 @@ const message = require('./messages');
 
 const constructorMethod = (app) => {
 
+    
+    console.log("Index router");
+    // app.use('/api', jwt.validateUser);
+    // app.use('/api/kid', auth.validateTimeForKidAccess);
+
     app.use('/register', registrationRoutes);
+    app.use('/api/parents', parents);
+    app.use('/api/kid', kid);
+    app.use('/api/request', request);
     app.use('/parents', parents);
     app.use('/kid', kid);
     app.use('/conversations', conversations);

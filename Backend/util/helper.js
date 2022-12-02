@@ -1,3 +1,6 @@
+const hash = require("crypto-js");
+const config = require("../config/settings.json");
+
 const getCurrentDate = () => {
     let d1 = new Date();
     let day = d1.getDate() >= 10 ? d1.getDate() : "0" + d1.getDate();
