@@ -118,8 +118,11 @@ export default function SignInForm() {
 
   return (
     <div className="form form-login">
+ <div className="login-form-sign">
+
+
       <div>
-        <h1>User Registration</h1>
+        <h2>USER REGISTRATION</h2>
       </div>
 
       {/* Calling to the methods */}
@@ -177,6 +180,7 @@ export default function SignInForm() {
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 }
