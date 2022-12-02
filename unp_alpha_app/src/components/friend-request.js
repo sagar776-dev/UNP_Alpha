@@ -4,8 +4,9 @@ import "antd/dist/antd.css";
 import { Button, Checkbox, Form, Input } from "antd";
 import { Descriptions } from "antd";
 import env from "../environment.json";
-
 import { useCookies } from "react-cookie";
+
+//friend requests functionality for parents
 
 function FriendRequest() {
   const [error, setError] = useState(null);
@@ -90,10 +91,16 @@ function FriendRequest() {
   } else {
     return (
       <div>
-        <div>
+        <div >
           <h2>Friends</h2>
           <table class="table request-table">
             <thead>
+            <link
+               href="https://fonts.googleapis.com/css?family=Rock+Salt"
+               rel="stylesheet"
+               type="text/css" />
+
+            <link href="friend-request-style.css" rel="stylesheet" />
               <th>Name</th>
               <th>Location</th>
               <th>Block</th>

@@ -12,10 +12,8 @@ router
       let message = await kidsData.serachKidByFilters(req.body);
       res.send({ message: message });
     } catch (error) {
-      res.send({error: error});
+      res.send({ error: error });
     }
   })
-
-
 
 module.exports = router;

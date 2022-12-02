@@ -59,9 +59,9 @@ let registerParent = async (postData) => {
   console.log("Token ", token);
   console.log("Email ", postData.email);
   let url =
-    "http://localhost:8080/api/parents/verify/" + postData.email + "&" + token;
+    "http://localhost:8080/register/verify/" + postData.email + "&" + token;
   emailService.sendEmail(
-    "sagara1997@gmail.com",
+    postData.email,
     "Verify your Email for unp_alpha ",
     "Click on the below URL to verify your EmailID\n" + url
   );
@@ -94,20 +94,26 @@ let registerKid = async (postData) => {
     age: postData.age,
     gender: postData.gender,
     userid: userInserted.id,
-    parentid: postData.parentid
+    location: postData.location,
+    street: postData.street,
+    school: postData.school,
+    grade: postData.grade,
+    ethnicity: postData.ethnicity,
+    parentid: postData.parentid,
+    flag: false
   });
 
-  let kidInserted = await kid.findOne({
-    where: { username: postData.username },
-  });
-  let parentInserted = await parent.findOne({
-    where: { email: postData.email },
-  });
+  // let kidInserted = await kid.findOne({
+  //   where: { username: postData.username },
+  // });
+  // let parentInserted = await parent.findOne({
+  //   where: { email: postData.email },
+  // });
 
-  await Parent_kid_mapping.create({
-    parent_id: parentInserted.id,
-    kid_id: kidInserted.id,
-  });
+  // await Parent_kid_mapping.create({
+  //   parent_id: parentInserted.id,
+  //   kid_id: kidInserted.id,
+  // });
 
   return "Kid registered succussefully";
 };
@@ -160,6 +166,17 @@ let login = async (postData) => {
   return message;
 };
 
+const verifyEmail = async (email, token) => {
+  let data = await parent.findOne({ where: { email: email } });
+  if (data.token === token) {
+    data.isEmailVerified = true;
+    await data.save();
+    return "Email Verified";
+  } else {
+    throw "Something went wrong!!";
+  }
+};
+
 let viewParentById = async (id) => {
   let data = await parent.findOne({ where: { email: id } });
   return data;
@@ -169,9 +186,7 @@ let viewAllUsers = async () => {
   return await parent.findAll();
 };
 
-let logout = async()=>{
-  
-}
+let logout = async () => {};
 
 module.exports = {
   registerParent,
@@ -179,4 +194,5 @@ module.exports = {
   login,
   viewAllUsers,
   viewParentById,
+  verifyEmail
 };

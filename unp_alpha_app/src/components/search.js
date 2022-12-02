@@ -10,14 +10,21 @@ import { Space } from "antd";
 
 import { useCookies } from "react-cookie";
 
+
+
 function Search() {
   // Declare a new state variable, which we'll call "count"
   const [data, setData] = useState();
   const [cookies, setCookie] = useCookies(["user"]);
+  const config = {
+    headers: {
+      Authorization: cookies.token,
+    },
+  };
   const onFinish = (e) => {
     console.log("reached here", e);
     axios
-      .post("http://localhost:8080/api/kid/filters", e)
+      .post("http://localhost:8080/api/kid/filters", e, config)
       .then((response) => {
         console.log("response", response.data);
         setData(response.data);

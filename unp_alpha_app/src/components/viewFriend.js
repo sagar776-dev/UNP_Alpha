@@ -8,7 +8,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Image } from "antd";
 
 function ViewFriends() {
-  // Declare a new state variable, which we'll call "count"
+  // Declaration of a new state variable, which we'll call "count"
 
   return (
     <div style={{ margin: 0, padding: 0 }}>

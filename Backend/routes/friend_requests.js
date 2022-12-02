@@ -17,6 +17,7 @@ router.route("/getAllRequests/:id").get(async (req, res) => {
       requests: requests
     }
     res.json(result);
+    return;
   } catch (error) {
     console.log(error);
     res.status(404).send({ error: error });
