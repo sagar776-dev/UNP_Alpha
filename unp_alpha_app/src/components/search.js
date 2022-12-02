@@ -106,6 +106,7 @@ function Search() {
       {data
         ? data.message.map((item, i) => {
             return (
+              
               <div>
                 {/* <option key={i} value={item.id}> */}
                 <div>
@@ -124,36 +125,91 @@ function Search() {
                         <Space wrap>
                           <Button type="primary" onClick={() => sendRequest(item.parentid)}>Add parent as friend</Button>
                         </Space>
+                        <div className="post-shown">
+
                         <Descriptions.Item label="firstname">
-                          First Name: {item.first_name}
+                          <div className="post-all">
+                          <div className="post-title">
+                          First Name:
+                          </div>
+                          <div className="post-value">
+                          {item.first_name}
+                          </div>
+                          </div>
                         </Descriptions.Item>{" "}
                         <br />
+
                         <Descriptions.Item label="lastname">
-                          Last Name: {item.last_name}
+                         
+                          <div className="post-all">
+                          <div className="post-title">
+                          Last Name:
+                          </div>
+                          <div className="post-value">
+                          {item.last_name}
+                          </div>
+                          </div>
                         </Descriptions.Item>
                         <br />
                         <Descriptions.Item label="grade">
-                          Grade: {item.grade}
+                         
+
+                          <div className="post-all">
+                          <div className="post-title">
+                          Grade:
+                          </div>
+                          <div className="post-value">
+                          {item.grade}
+                          </div>
+                          </div>
                         </Descriptions.Item>
                         <br />
                         <Descriptions.Item label="location">
-                          Location: {item.location}
+                       
+                          <div className="post-all">
+                          <div className="post-title">
+                          Location:
+                          </div>
+                          <div className="post-value">
+                          {item.location}
+                          </div>
+                          </div>
                         </Descriptions.Item>
                         <br />
                         <Descriptions.Item label="school">
-                          School: {item.school}
+                          
+                          <div className="post-all">
+                          <div className="post-title">
+                          School: 
+                          </div>
+                          <div className="post-value">
+                          {item.school}
+                          </div>
+                          </div>
                         </Descriptions.Item>
                         <br />
                         <Descriptions.Item label="street">
-                          Street: {item.street}
+                        <div className="post-all">
+                          <div className="post-title">
+                          Street: 
+                          </div>
+                          <div className="post-value">
+                          {item.street}
+                          </div>
+                          </div>
+                       
+                    
                         </Descriptions.Item>
+                        </div>
                         <br />
                       </Card>
                     </div>
                   </Descriptions>
+                  
                 </div>
                 {/* </option> */}
               </div>
+              
             );
           })
         : null}
