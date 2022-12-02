@@ -96,10 +96,11 @@ let registerKid = async (postData) => {
     userid: userInserted.id,
     location: postData.location,
     street: postData.street,
-    school: postData.grade,
+    school: postData.school,
     grade: postData.grade,
     ethnicity: postData.ethnicity,
     parentid: postData.parentid,
+    flag: false
   });
 
   // let kidInserted = await kid.findOne({

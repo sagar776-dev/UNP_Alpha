@@ -40,7 +40,7 @@ const Parent = sequelize.define(
     },
     location: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     userid: {
       type: Sequelize.INTEGER,
