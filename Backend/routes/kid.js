@@ -15,8 +15,5 @@ router
       res.send({ error: error });
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json(e);
-  });
 
 module.exports = router;

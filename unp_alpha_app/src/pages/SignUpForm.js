@@ -118,8 +118,11 @@ export default function SignInForm() {
 
   return (
     <div className="form form-login">
+ <div className="login-form-sign">
+
+
       <div>
-        <h1>User Registration</h1>
+        <h2>USER REGISTRATION</h2>
       </div>
 
       {/* Calling to the methods */}
@@ -178,5 +181,82 @@ export default function SignInForm() {
         </button>
       </form>
     </div>
+    </div>
   );
 }
+<<<<<<< HEAD
+=======
+};
+
+// Showing success message
+const successMessage = () => {
+return (
+<div
+className="success"
+style={{
+display: submitted ? '' : 'none',
+}}>
+<h1>{response.message}</h1>
+</div>
+);
+};
+
+// Showing error message if error is true
+const errorMessage = () => {
+return (
+<div
+className="error"
+style={{
+display: error ? '' : 'none',
+}}>
+<h1>Please enter all the fields</h1>
+</div>
+);
+};
+
+return (
+<div className="form form-login">
+<div>
+<h1>User Registration</h1>
+</div>
+
+{/* Calling to the methods */}
+<div className="messages">
+{errorMessage()}
+{successMessage()}
+</div>
+
+<form>
+{/* Labels and inputs for form data */}
+<label className="label">First Name</label>
+<input onChange={handleFirstName} className="input"
+value={firstname} type="text" />
+
+<label className="label">Last Name</label>
+<input onChange={handleLastName} className="input"
+value={lastname} type="text" />
+
+<label className="label">Gender</label>
+<input onChange={handleGender} className="input"
+value={gender} type="text" />
+
+<label className="label">Age</label>
+<input onChange={handleAge} className="input"
+value={age} type="text" />
+
+<label className="label">Email</label>
+<input onChange={handleEmail} className="input"
+value={email} type="email" />
+
+<label className="label">Password</label>
+<input onChange={handlePassword} className="input"
+value={password} type="password" />
+
+<button onClick={handleSubmit} className="btn" type="submit">
+Submit
+</button>
+</form>
+</div>
+);
+}
+>>>>>>> ashay

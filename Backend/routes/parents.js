@@ -15,17 +15,14 @@ router
       res.send({error: error});
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json(e);
-  });
 
   router
   .route("/location/all")
   .get(async (req, res) => {
     try {
-      console.log('reached here1')
+      // console.log('reached here1')
       let message = await parentsData.serachAllParentByLocation(req.body);
-      console.log("There is the message", message)
+      // console.log("There is the message", message)
       res.send({ message: message });
     } catch (error) {
       res.send({error: error});
@@ -34,6 +31,7 @@ router
 //  .get(async (req, res) => {
 //    res.status(404).json(e);
 //  });
+
 
 router
   .route("/sendemail")
@@ -46,5 +44,6 @@ router
       res.send({error: error});
     }
   });
+
 
 module.exports = router;
