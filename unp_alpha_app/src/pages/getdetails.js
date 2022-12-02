@@ -71,7 +71,7 @@ export default function GetDetailsForm() {
     }
   };
 
-  // Showing success message
+  // Showing success message if there is no error
   const successMessage = () => {
     return (
       <div
