@@ -91,8 +91,9 @@ export default function SignInForm() {
 
   return (
     <div className="form form-login">
+      <div className="login-form-sign">
       <div>
-        <h1>Login</h1>
+        <h2>LOGIN</h2>
       </div>
 
       <div className="messages">
@@ -116,11 +117,13 @@ export default function SignInForm() {
           value={password}
           type="password"
         />
-
+  <div className="login-button">
         <button onClick={handleSubmit} className="btn" type="submit">
           Submit
         </button>
+        </div>
       </form>
+    </div>
     </div>
   );
 }

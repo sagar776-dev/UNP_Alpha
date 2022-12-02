@@ -17,9 +17,6 @@ router
       res.send({ error: error });
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json(e);
-  });
 
 router.route("/location/all").get(async (req, res) => {
   try {
@@ -100,5 +97,6 @@ router.route("/unlockkid/:id").get(async (req, res) => {
     res.send({ error: e });
   }
 });
+
 
 module.exports = router;

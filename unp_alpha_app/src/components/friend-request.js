@@ -6,6 +6,8 @@ import { Descriptions } from "antd";
 import env from "../environment.json";
 import { useCookies } from "react-cookie";
 
+//friend requests functionality for parents
+
 function FriendRequest() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -99,7 +101,6 @@ function FriendRequest() {
                type="text/css" />
 
             <link href="friend-request-style.css" rel="stylesheet" />
-
               <th>Name</th>
               <th>Location</th>
               <th>Block</th>

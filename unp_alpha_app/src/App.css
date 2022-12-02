@@ -26,10 +26,10 @@
   margin: 10px auto;
   }
   
-  .messages{
+  /* .messages{
   display: flex;
   justify-content: center;
-  }
+  } */
   
   .error{
   display: block;
@@ -58,30 +58,53 @@
   }
    
 
-
+/* 
   .message {
     justify-self: end;
     color: black;
       border: aquamarine;
       /* width: 300px; */
-      border: 1px solid green;
+      /* border: 1px solid green;
       padding: 50px;
       margin: 20px;
       box-shadow: 12px 12px 2px 1px rgb(0 0 255 / 20%);
-  }
+  } */
   
-  .message-box {
+  /* .message-box {
     display: grid;
-  }
+  }  */
 
   .ant-card-body {
     display: grid;
 }
 
 .form-login{
-  background-color: cornflowerblue;
+  background-color: #373e4a;
   display: grid;
   justify-content: center;
   align-content: center;
   height: 100vh;
+}
+
+
+.login-form-sign {
+  justify-self: end;
+  /* color: white; */
+  border: aquamarine;
+  /* width: 300px; */
+  border: 1px solid white;
+  padding: 50px;
+  margin: 20px;
+  box-shadow: 12px 12px 2px 1px rgb(0 0 255 / 20%);
+  background-color: white;
+}
+
+button.btn {
+  background-color: blue;
+}
+
+
+.post-all {
+  display: flex;
+  margin-left: 50px;
 }

@@ -17,9 +17,7 @@ router
       res.send({ error: error });
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json({ Error: "Not found" });
-  });
+
 
 router
   .route("/signup/kid")
@@ -31,9 +29,7 @@ router
       res.send({ error: error });
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json({ Error: "Not found" });
-  });
+
 
 router
   .route("/login")
@@ -48,9 +44,7 @@ router
       res.send({ error: error });
     }
   })
-  .get(async (req, res) => {
-    res.status(404).json({ Error: "Not found" });
-  });
+
 
 router.route("/getAllUsers").get(async (req, res) => {
   let data = await registrationData.viewAllUsers();
@@ -63,6 +57,7 @@ router.route("/getParentById/:id").get(async (req, res) => {
 });
 
 //Creates a new post
+
 router.route("/verify/:email&:token").get(async (req, res) => {
   try {
     console.log(req.params.token + " " + req.params.email);
@@ -74,5 +69,8 @@ router.route("/verify/:email&:token").get(async (req, res) => {
     res.send({ error: error });
   }
 });
+
+//router.post("/login", async (req, res) => {});
+
 
 module.exports = router;

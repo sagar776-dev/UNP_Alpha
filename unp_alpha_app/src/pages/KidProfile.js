@@ -6,6 +6,11 @@
 // import React from 'react';
 import "antd/dist/antd.css";
 // import './index.css';
+
+import { Button, Form, Input, InputNumber } from "antd";
+import React, { useState, useEffect } from "react";
+import Search from "../components/search";
+
 import { Button, Form, Input, InputNumber } from "antd";
 import React, { useState, useEffect } from "react";
 import Search from "../components/search";
