@@ -1,0 +1,12 @@
+{
+  "mysqlConfig": {
+    "host": "lin-12699-7598-mysql-primary.servers.linodedb.net",
+    "port":3306,
+    "username":"unp_alpha",
+    "password":"Unp.Alpha1",
+    "database": "unp_alpha"
+  },
+  "key": "2e35f242a46d67eeb74aabc37d5e96gv"
+}
+
+

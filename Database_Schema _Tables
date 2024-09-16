@@ -1,0 +1,52 @@
+User Table
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+Parent Table
+
+CREATE TABLE `parent` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `age` smallint(3) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `isEmailVerified` tinyint(4) NOT NULL,
+  `userid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userid_idx` (`userid`),
+  CONSTRAINT `perent_userid` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+Kid Table
+
+CREATE TABLE `kid` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `street` varchar(50) NOT NULL,
+  `school` varchar(50) NOT NULL,
+    `ethnicity` varchar(50) NOT NULL,
+        `location` varchar(50) NOT NULL,
+  `age` smallint(3) NOT NULL,
+  `grade` smallint(3) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `userid` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userid_idx` (`userid`),
+  CONSTRAINT `kid_userid` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Insert Command to update multiple tables
+
+INSERT INTO `unp_alpha`.`user` (`id`, `username`, `password`) VALUES ('2', 'Sagar', 'sagarsdfsd');
+INSERT INTO `unp_alpha`.`parent` (`id`, `first_name`, `last_name`, `email`, `phone`, `age`, `gender`, `isEmailVerified`, `userid`) VALUES ('2', 'Sagar P', 'Sagar P', 'sagar@gmail.com', '123456789', '20', 'Male', '1', '2');
+INSERT INTO `unp_alpha`.`kid` (`id`, `first_name`, `last_name`, `age`, `gender`, `userid`, `location`) VALUES ('2', ' Sagar C', 'Sagar C', '11', 'Male', '2', 'abc');

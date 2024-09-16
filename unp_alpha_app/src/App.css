@@ -1,0 +1,110 @@
+.App {
+  text-align: center;
+  background-color:green;
+  }
+  
+  .label{
+  display: block;
+  font-size: larger;
+  color: rgb(26, 25, 25);
+  padding: 5px;
+  }
+  
+  .input{
+  font-size: larger;
+  padding: 5px;
+  margin: 2px;
+  
+  }
+  .btn{
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  font-size: larger;
+  display: block;
+  padding: 5px;
+  margin: 10px auto;
+  }
+  
+  /* .messages{
+  display: flex;
+  justify-content: center;
+  } */
+  
+  .error{
+  display: block;
+  background-color: rgb(249, 245, 245);
+  color: rgb(10, 1, 1);
+  width: fit-content;
+  height: 50px;
+  padding: 5px;
+  }
+  
+  .success{
+  display: block;
+  background-color: rgb(245, 247, 247);
+  color: black;
+  width: fit-content;
+  height: 50px;
+  padding: 5px;
+  }
+
+  body {
+    background-color: #373e4a;
+    color: rgb(145, 23, 23);
+    /* padding: 40px; */
+    font-family: Arial;
+    text-align: center;
+  }
+   
+
+/* 
+  .message {
+    justify-self: end;
+    color: black;
+      border: aquamarine;
+      /* width: 300px; */
+      /* border: 1px solid green;
+      padding: 50px;
+      margin: 20px;
+      box-shadow: 12px 12px 2px 1px rgb(0 0 255 / 20%);
+  } */
+  
+  /* .message-box {
+    display: grid;
+  }  */
+
+  .ant-card-body {
+    display: grid;
+}
+
+.form-login{
+  background-color: #373e4a;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+}
+
+
+.login-form-sign {
+  justify-self: end;
+  /* color: white; */
+  border: aquamarine;
+  /* width: 300px; */
+  border: 1px solid white;
+  padding: 50px;
+  margin: 20px;
+  box-shadow: 12px 12px 2px 1px rgb(0 0 255 / 20%);
+  background-color: white;
+}
+
+button.btn {
+  background-color: blue;
+}
+
+
+.post-all {
+  display: flex;
+  margin-left: 50px;
+}
